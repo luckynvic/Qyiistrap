@@ -5,6 +5,7 @@
  * @copyright Copyright &copy; Christoffer Niska 2013-
  * @license http://www.opensource.org/licenses/bsd-license.php New BSD License
  * @package bootstrap.widgets
+ * change class name to TbJumbotron Lucky Vic <luckynvic@gmail.com>
  */
 
 Yii::import('bootstrap.helpers.TbHtml');
@@ -13,7 +14,7 @@ Yii::import('bootstrap.helpers.TbHtml');
  * Bootstrap hero unit widget.
  * @see http://twitter.github.com/bootstrap/javascript.html#affix
  */
-class TbHeroUnit extends CWidget
+class TbJumbotron extends CWidget
 {
     /**
      * @var string the heading text.
@@ -41,6 +42,12 @@ class TbHeroUnit extends CWidget
     public $viewData = array();
 
     /**
+    * @var boolean add fluid container if true
+    *
+    */
+    public $fluid=true;
+
+    /**
      * Initializes the widget.
      */
     public function init()
@@ -52,6 +59,7 @@ class TbHeroUnit extends CWidget
             }
         }
         $this->htmlOptions['headingOptions'] = $this->headingOptions;
+        $this->htmlOptions['fluid'] = $this->fluid;
     }
 
     /**
@@ -59,6 +67,6 @@ class TbHeroUnit extends CWidget
      */
     public function run()
     {
-        echo TbHtml::heroUnit($this->heading, $this->content, $this->htmlOptions);
+        echo TbHtml::jumbotron($this->heading, $this->content, $this->htmlOptions);
     }
 }

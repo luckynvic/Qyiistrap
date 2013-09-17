@@ -57,6 +57,15 @@ class TbAlert extends CWidget
                     TbHtml::ALERT_COLOR_INFO,
                     TbHtml::ALERT_COLOR_ERROR
                 ); // render all styles by default
+            } else
+            {
+                // change alerts=array('sucess') to alerts=array('success'=>array())
+
+                foreach ($this->alerts as $key => $value) {
+                    if(!is_array($value))
+                        unset($this->alerts[$key]);
+                        $this->alerts[$value]=array();
+                }
             }
         }
         if (isset($colors)) {
@@ -65,6 +74,7 @@ class TbAlert extends CWidget
                 $this->alerts[$color] = array();
             }
         }
+        
     }
 
     /**

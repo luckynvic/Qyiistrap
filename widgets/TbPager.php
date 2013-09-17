@@ -51,6 +51,10 @@ class TbPager extends CBasePager
      */
     public $htmlOptions = array();
 
+    public $simplePager=false;
+
+    public $alignJustify=true;    
+
     /**
      * Initializes the widget.
      */
@@ -68,9 +72,15 @@ class TbPager extends CBasePager
      */
     public function run()
     {
+         if($this->simplePager)
+            $this->hideFirstAndLast=true;
+
         $links = $this->createPageLinks();
         if (!empty($links)) {
-            echo TbHtml::pagination($links, $this->htmlOptions);
+            if($this->simplePager)
+                echo TbHtml::pager($links, $this->htmlOptions);
+            else    
+                echo TbHtml::pagination($links, $this->htmlOptions);
         }
     }
 
@@ -99,19 +109,28 @@ class TbPager extends CBasePager
             $page = 0;
         }
 
-        $links[] = $this->createPageLink($this->prevPageLabel, $page, $currentPage <= 0, false);
+        $prev=$this->createPageLink($this->prevPageLabel, $page, $currentPage <= 0, false);
+        
+        if($this->alignJustify && $this->simplePager)
+            TbArray::defaultValue('previous', true, $prev);
 
-        // internal pages
-        for ($i = $beginPage; $i <= $endPage; ++$i) {
-            $links[] = $this->createPageLink($i + 1, $i, false, $i == $currentPage);
+        $links[] = $prev;
+
+        if(!$this->simplePager){
+            // internal pages
+            for ($i = $beginPage; $i <= $endPage; ++$i) {
+                $links[] = $this->createPageLink($i + 1, $i, false, $i == $currentPage);
+            }
         }
 
         // next page
         if (($page = $currentPage + 1) >= $pageCount - 1) {
             $page = $pageCount - 1;
         }
-
-        $links[] = $this->createPageLink($this->nextPageLabel, $page, $currentPage >= $pageCount - 1, false);
+        $next= $this->createPageLink($this->nextPageLabel, $page, $currentPage >= $pageCount - 1, false);
+        if($this->alignJustify && $this->simplePager)
+            TbArray::defaultValue('next', true, $next);
+        $links[] = $next;
 
         // last page
         if (!$this->hideFirstAndLast) {

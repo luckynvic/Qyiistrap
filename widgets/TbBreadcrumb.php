@@ -18,7 +18,7 @@ class TbBreadcrumb extends CWidget
     /**
      * @var string the divider between links in the breadcrumbs.
      */
-    public $divider = '/';
+    public $divider = '';
     /**
      * @var boolean whether to HTML encode the link labels.
      */

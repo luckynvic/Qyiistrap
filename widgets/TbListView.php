@@ -14,10 +14,16 @@ Yii::import('zii.widgets.CListView');
  */
 class TbListView extends CListView
 {
+
     /**
-     * @var string the CSS class name for the pager container. Defaults to 'pagination'.
+     * @var string the CSS class name for the items container. Defaults to 'items'.
      */
-    public $pagerCssClass = 'pagination';
+    public $itemsCssClass='items';
+
+    /**
+     * @var string the CSS class name for the pager container. Defaults to ''.
+     */
+    public $pagerCssClass = 'pagination-container';
     /**
      * @var array the configuration for the pager.
      * Defaults to <code>array('class'=>'ext.bootstrap.widgets.TbPager')</code>.
@@ -31,7 +37,7 @@ class TbListView extends CListView
     /**
      * @var string the template to be used to control the layout of various sections in the view.
      */
-    public $template = "{items}\n<div class=\"row-fluid\"><div class=\"span6\">{pager}</div><div class=\"span6\">{summary}</div></div>";
+    public $template = "{items}<div class=\"clearfix\"></div>\n<div class=\"row\"><div class=\"col-md-6\">{pager}</div><div class=\"col-md-6\">{summary}</div></div>";
 
     /**
      * Renders the empty message when there is no data.
@@ -41,4 +47,37 @@ class TbListView extends CListView
         $emptyText = $this->emptyText === null ? Yii::t('zii', 'No results found.') : $this->emptyText;
         echo TbHtml::tag('div', array('class' => 'empty', 'span' => 12), $emptyText);
     }
+
+    /**
+     * Renders the sorter
+     */
+
+    public function renderSorter()
+    {
+    if($this->dataProvider->getItemCount()<=0 || !$this->enableSorting || empty($this->sortableAttributes))
+        return;
+    echo CHtml::openTag('div',array('class'=>$this->sorterCssClass))."\n";
+    echo $this->sorterHeader===null ? Yii::t('zii','Sort by: ') : $this->sorterHeader;
+    echo "<ul>\n";
+    $sort=$this->dataProvider->getSort();
+    foreach($this->sortableAttributes as $name=>$label)
+    {
+        echo "<li>";
+        $labelText=$label;
+        if(is_integer($name))
+            $labelText=$sort->resolveLabel($label);
+
+        $directions=$sort->getDirections();
+        if(isset($directions[$label]))
+            $labelText.=' <span class="caret"></span>';
+        
+        echo $sort->link($label,$labelText);
+
+        echo "</li>\n";
+    }
+    echo "</ul>";
+    echo $this->sorterFooter;
+    echo CHtml::closeTag('div');
+} 
+
 }

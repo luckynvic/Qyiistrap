@@ -75,6 +75,9 @@ class TbDataColumn extends CDataColumn
                     '.'
                 ) === false
             ) {
+                if(empty($this->filterInputOptions['class']))
+                $this->filterInputOptions['class']='form-control input-sm';
+
                 if ($this->filterInputOptions) {
                     $filterInputOptions = $this->filterInputOptions;
                     if (empty($filterInputOptions['id'])) {
@@ -83,8 +86,10 @@ class TbDataColumn extends CDataColumn
                 } else {
                     $filterInputOptions = array();
                 }
+                
                 if (is_array($this->filter)) {
                     $filterInputOptions['prompt'] = '';
+
                     echo CHtml::activeDropDownList(
                         $this->grid->filter,
                         $this->name,
@@ -101,4 +106,6 @@ class TbDataColumn extends CDataColumn
             }
         }
     }
+
+
 }

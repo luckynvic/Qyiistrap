@@ -86,21 +86,41 @@ class TbNavbar extends CWidget
         $brand = $this->brandLabel !== false
             ? TbHtml::navbarBrandLink($this->brandLabel, $this->brandUrl, $this->brandOptions)
             : '';
+        
         ob_start();
         foreach ($this->items as $item) {
             if (is_string($item)) {
                 echo $item;
             } else {
+                
                 $widgetClassName = TbArray::popValue('class', $item);
+                $itemAlignment= TbArray::popValue('alignment', $item);
+
+                if(!empty($itemAlignment))
+                TbHtml::addCssClass('navbar-'.$itemAlignment,$item['htmlOptions']);                    
+
+                // add class item navbar
+                $itemNavbarClass=TbHtml::NAVBAR_ITEM_TEXT;
+
+                if($widgetClassName=='bootstrap.widgets.TbNav')
+                $itemNavbarClass=TbHtml::NAVBAR_ITEM_NAV;
+
+                if($widgetClassName=='bootstrap.widgets.TbActiveForm')
+                $itemNavbarClass=TbHtml::NAVBAR_ITEM_FORM;
+
+
+                TbHtml::addCssClass('navbar-'.$itemNavbarClass,$item['htmlOptions']);
+
                 if ($widgetClassName !== null) {
                     $this->controller->widget($widgetClassName, $item);
                 }
             }
         }
         $items = ob_get_clean();
+
         ob_start();
         if ($this->collapse !== false) {
-            TbHtml::addCssClass('nav-collapse', $this->collapseOptions);
+            TbHtml::addCssClass('navbar-collapse', $this->collapseOptions);
             ob_start();
             /* @var TbCollapse $collapseWidget */
             $collapseWidget = $this->controller->widget(
@@ -112,15 +132,23 @@ class TbNavbar extends CWidget
                 )
             );
             $collapseContent = ob_get_clean();
+            echo '<div class="navbar-header">';
             echo TbHtml::navbarCollapseLink('#' . $collapseWidget->getId());
-            echo $brand . $collapseContent;
+            echo $brand;
+            echo '</div>';
+            echo $collapseContent;
 
         } else {
-            echo $brand . $items;
+            echo '<div class="navbar-header">';
+            echo $brand;
+            echo '</div>';
+            echo $items;
         }
         $containerContent = ob_get_clean();
         $containerOptions = TbArray::popValue('containerOptions', $this->htmlOptions, array());
-        TbHtml::addCssClass($this->fluid ? 'container-fluid' : 'container', $containerOptions);
+
+        if(!$this->fluid)
+        TbHtml::addCssClass ('container', $containerOptions);
         ob_start();
         echo TbHtml::openTag('div', $containerOptions);
         echo $containerContent;

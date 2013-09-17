@@ -25,7 +25,7 @@ class TbHtml extends CHtml // required in order to access the protected methods 
 
     const TEXT_COLOR_DEFAULT = '';
     const TEXT_COLOR_WARNING = 'warning';
-    const TEXT_COLOR_ERROR = 'error';
+    const TEXT_COLOR_DANGER = 'danger';
     const TEXT_COLOR_INFO = 'info';
     const TEXT_COLOR_SUCCESS = 'success';
 
@@ -41,6 +41,7 @@ class TbHtml extends CHtml // required in order to access the protected methods 
     const FORM_LAYOUT_INLINE = 'inline';
     const FORM_LAYOUT_SEARCH = 'search';
 
+    const INPUT_TYPE_STATIC = 'static';
     const INPUT_TYPE_TEXT = 'textField';
     const INPUT_TYPE_PASSWORD = 'passwordField';
     const INPUT_TYPE_URL = 'urlField';
@@ -62,13 +63,11 @@ class TbHtml extends CHtml // required in order to access the protected methods 
     const INPUT_TYPE_SEARCH = 'searchQuery';
     const INPUT_TYPE_CUSTOM = 'widget';
 
-    const INPUT_SIZE_MINI = 'mini';
-    const INPUT_SIZE_SMALL = 'small';
+    const INPUT_SIZE_MINI = 'xs';
+    const INPUT_SIZE_SMALL = 'sm';
     const INPUT_SIZE_DEFAULT = '';
-    const INPUT_SIZE_MEDIUM = 'medium';
-    const INPUT_SIZE_LARGE = 'large';
-    const INPUT_SIZE_XLARGE = 'xlarge';
-    const INPUT_SIZE_XXLARGE = 'xxlarge';
+    const INPUT_SIZE_MEDIUM = 'md';
+    const INPUT_SIZE_LARGE = 'lg';
 
     const INPUT_COLOR_DEFAULT = '';
     const INPUT_COLOR_WARNING = 'warning';
@@ -90,6 +89,8 @@ class TbHtml extends CHtml // required in order to access the protected methods 
     const BUTTON_TYPE_AJAXBUTTON = 'ajaxButton';
     const BUTTON_TYPE_INPUTBUTTON = 'inputButton';
     const BUTTON_TYPE_INPUTSUBMIT = 'inputSubmit';
+    const BUTTON_TYPE_AJAXSUBMIT='ajaxSubmit';
+    const BUTTON_TYPE_LABEL='label';
 
     const BUTTON_COLOR_DEFAULT = '';
     const BUTTON_COLOR_PRIMARY = 'primary';
@@ -100,10 +101,10 @@ class TbHtml extends CHtml // required in order to access the protected methods 
     const BUTTON_COLOR_INVERSE = 'inverse';
     const BUTTON_COLOR_LINK = 'link';
 
-    const BUTTON_SIZE_MINI = 'mini';
-    const BUTTON_SIZE_SMALL = 'small';
-    const BUTTON_SIZE_DEFAULT = '';
-    const BUTTON_SIZE_LARGE = 'large';
+    const BUTTON_SIZE_MINI = 'xs';
+    const BUTTON_SIZE_SMALL = 'sm';
+    const BUTTON_SIZE_DEFAULT = 'md';
+    const BUTTON_SIZE_LARGE = 'lg';
 
     const BUTTON_TOGGLE_CHECKBOX = 'checkbox';
     const BUTTON_TOGGLE_RADIO = 'radio';
@@ -123,6 +124,9 @@ class TbHtml extends CHtml // required in order to access the protected methods 
     const NAV_TYPE_NONE = '';
     const NAV_TYPE_TABS = 'tabs';
     const NAV_TYPE_PILLS = 'pills';
+
+    // removed in bootstrap 3
+    // i still add this type coz i need it in my application
     const NAV_TYPE_LIST = 'list';
 
     const TABS_PLACEMENT_ABOVE = '';
@@ -141,14 +145,23 @@ class TbHtml extends CHtml // required in order to access the protected methods 
 
     const NAVBAR_COLOR_INVERSE = 'inverse';
 
+    const NAVBAR_ITEM_NAV='nav';
+    const NAVBAR_ITEM_BUTTON='btn';
+    const NAVBAR_ITEM_TEXT='text';
+    const NAVBAR_ITEM_LINK='link';
+
+    const NAVBAR_ITEM_ALIGNMENT_RIGHT='right';
+    const NAVBAR_ITEM_ALIGNMENT_LEFT='left';
+
+
     //
     // PAGINATION
     // --------------------------------------------------
 
-    const PAGINATION_SIZE_MINI = 'mini';
-    const PAGINATION_SIZE_SMALL = 'small';
-    const PAGINATION_SIZE_DEFAULT = '';
-    const PAGINATION_SIZE_LARGE = 'large';
+    const PAGINATION_SIZE_MINI = 'xs';
+    const PAGINATION_SIZE_SMALL = 'sm';
+    const PAGINATION_SIZE_DEFAULT = 'md';
+    const PAGINATION_SIZE_LARGE = 'lg';
 
     const PAGINATION_ALIGN_LEFT = 'left';
     const PAGINATION_ALIGN_CENTER = 'centered';
@@ -158,7 +171,7 @@ class TbHtml extends CHtml // required in order to access the protected methods 
     // LABELS AND BADGES
     // --------------------------------------------------
 
-    const LABEL_COLOR_DEFAULT = '';
+    const LABEL_COLOR_DEFAULT = 'default';
     const LABEL_COLOR_SUCCESS = 'success';
     const LABEL_COLOR_WARNING = 'warning';
     const LABEL_COLOR_IMPORTANT = 'important';
@@ -204,7 +217,6 @@ class TbHtml extends CHtml // required in order to access the protected methods 
     const ALERT_COLOR_INFO = 'info';
     const ALERT_COLOR_SUCCESS = 'success';
     const ALERT_COLOR_WARNING = 'warning';
-    const ALERT_COLOR_ERROR = 'error';
     const ALERT_COLOR_DANGER = 'danger';
 
     //
@@ -221,9 +233,9 @@ class TbHtml extends CHtml // required in order to access the protected methods 
     // MISC
     // --------------------------------------------------
 
-    const WELL_SIZE_SMALL = 'small';
+    const WELL_SIZE_SMALL = 'sm';
     const WELL_SIZE_DEFAULT = '';
-    const WELL_SIZE_LARGE = 'large';
+    const WELL_SIZE_LARGE = 'lg';
 
     const PULL_LEFT = 'left';
     const PULL_RIGHT = 'right';
@@ -263,154 +275,219 @@ class TbHtml extends CHtml // required in order to access the protected methods 
     const ICON_COLOR_DEFAULT = '';
     const ICON_COLOR_WHITE = 'white';
 
-    const ICON_GLASS = 'icon-glass';
-    const ICON_MUSIC = 'icon-music';
-    const ICON_SEARCH = 'icon-search';
-    const ICON_ENVELOPE = 'icon-envelope';
-    const ICON_HEART = 'icon-heart';
-    const ICON_STAR = 'icon-star';
-    const ICON_STAR_EMPTY = 'icon-star-empty';
-    const ICON_USER = 'icon-user';
-    const ICON_FILM = 'icon-film';
-    const ICON_TH_LARGE = 'icon-th-large';
-    const ICON_TH = 'icon-th';
-    const ICON_TH_LIST = 'icon-th-list';
-    const ICON_OK = 'icon-ok';
-    const ICON_REMOVE = 'icon-remove';
-    const ICON_ZOOM_IN = 'icon-zoom-in';
-    const ICON_ZOOM_OUT = 'icon-zoom-out';
-    const ICON_OFF = 'icon-off';
-    const ICON_SIGNAL = 'icon-signal';
-    const ICON_COG = 'icon-cog';
-    const ICON_TRASH = 'icon-trash';
-    const ICON_HOME = 'icon-home';
-    const ICON_FILE = 'icon-file';
-    const ICON_TIME = 'icon-time';
-    const ICON_ROAD = 'icon-road';
-    const ICON_DOWNLOAD_ALT = 'icon-download-alt';
-    const ICON_DOWNLOAD = 'icon-download';
-    const ICON_UPLOAD = 'icon-upload';
-    const ICON_INBOX = 'icon-inbox';
-    const ICON_PLAY_CIRCLE = 'icon-play-circle';
-    const ICON_REPEAT = 'icon-repeat';
-    const ICON_REFRESH = 'icon-refresh';
-    const ICON_LIST_ALT = 'icon-list-alt';
-    const ICON_LOCK = 'icon-lock';
-    const ICON_FLAG = 'icon-flag';
-    const ICON_HEADPHONES = 'icon-headphones';
-    const ICON_VOLUME_OFF = 'icon-volume-off';
-    const ICON_VOLUME_DOWN = 'icon-volume-down';
-    const ICON_VOLUME_UP = 'icon-volume-up';
-    const ICON_QRCODE = 'icon-qrcode';
-    const ICON_BARCODE = 'icon-barcode';
-    const ICON_TAG = 'icon-tag';
-    const ICON_TAGS = 'icon-tags';
-    const ICON_BOOK = 'icon-book';
-    const ICON_BOOKMARK = 'icon-bookmark';
-    const ICON_PRINT = 'icon-print';
-    const ICON_CAMERA = 'icon-camera';
-    const ICON_FONT = 'icon-font';
-    const ICON_BOLD = 'icon-bold';
-    const ICON_ITALIC = 'icon-italic';
-    const ICON_TEXT_HEIGHT = 'icon-text-height';
-    const ICON_TEXT_WIDTH = 'icon-text-width';
-    const ICON_ALIGN_LEFT = 'icon-align-left';
-    const ICON_ALIGN_CENTER = 'icon-align-center';
-    const ICON_ALIGN_RIGHT = 'icon-align-right';
-    const ICON_ALIGN_JUSTIFY = 'icon-align-justify';
-    const ICON_LIST = 'icon-list';
-    const ICON_INDENT_LEFT = 'icon-indent-left';
-    const ICON_INDENT_RIGHT = 'icon-indent-right';
-    const ICON_FACETIME_VIDEO = 'icon-facetime-video';
-    const ICON_PICTURE = 'icon-picture';
-    const ICON_PENCIL = 'icon-pencil';
-    const ICON_MAP_MARKER = 'icon-map-marker';
-    const ICON_ADJUST = 'icon-adjust';
-    const ICON_TINT = 'icon-tint';
-    const ICON_EDIT = 'icon-edit';
-    const ICON_SHARE = 'icon-share';
-    const ICON_CHECK = 'icon-check';
-    const ICON_MOVE = 'icon-move';
-    const ICON_STEP_BACKWARD = 'icon-step-backward';
-    const ICON_FAST_BACKWARD = 'icon-fast-backward';
-    const ICON_BACKWARD = 'icon-backward';
-    const ICON_PLAY = 'icon-play';
-    const ICON_PAUSE = 'icon-pause';
-    const ICON_STOP = 'icon-pause';
-    const ICON_FORWARD = 'icon-forward';
-    const ICON_FAST_FORWARD = 'icon-fast-forward';
-    const ICON_STEP_FORWARD = 'icon-step-forward';
-    const ICON_EJECT = 'icon-eject';
-    const ICON_CHEVRON_LEFT = 'icon-chevron-left';
-    const ICON_CHEVRON_RIGHT = 'icon-chevron-right';
-    const ICON_PLUS_SIGN = 'icon-plus-sign';
-    const ICON_MINUS_SIGN = 'icon-minus-sign';
-    const ICON_REMOVE_SIGN = 'icon-remove-sign';
-    const ICON_OK_SIGN = 'icon-ok-sign';
-    const ICON_QUESTION_SIGN = 'icon-question-sign';
-    const ICON_INFO_SIGN = 'icon-info-sign';
-    const ICON_SCREENSHOT = 'icon-screenshot';
-    const ICON_REMOVE_CIRCLE = 'icon-remove-circle';
-    const ICON_OK_CIRCLE = 'icon-ok-circle';
-    const ICON_BAN_CIRCLE = 'icon-ban-circle';
-    const ICON_ARROW_LEFT = 'icon-arrow-left';
-    const ICON_ARROW_RIGHT = 'icon-arrow-right';
-    const ICON_ARROW_UP = 'icon-arrow-up';
-    const ICON_ARROW_DOWN = 'icon-arrow-down';
-    const ICON_SHARE_ALT = 'icon-share-alt';
-    const ICON_RESIZE_FULL = 'icon-resize-full';
-    const ICON_RESIZE_SMALL = 'icon-resize-small';
-    const ICON_PLUS = 'icon-plus';
-    const ICON_MINUS = 'icon-minus';
-    const ICON_ASTERISK = 'icon-asterisk';
-    const ICON_EXCLAMATION_SIGN = 'icon-exclamation-sign';
-    const ICON_GIFT = 'icon-gift';
-    const ICON_LEAF = 'icon-leaf';
-    const ICON_FIRE = 'icon-fire';
-    const ICON_EYE_OPEN = 'icon-eye-open';
-    const ICON_EYE_CLOSE = 'icon-eye-close';
-    const ICON_WARNING_SIGN = 'icon-warning-sign';
-    const ICON_PLANE = 'icon-plane';
-    const ICON_CALENDAR = 'icon-calendar';
-    const ICON_RANDOM = 'icon-random';
-    const ICON_COMMENT = 'icon-comment';
-    const ICON_MAGNET = 'icon-magnet';
-    const ICON_CHEVRON_UP = 'icon-chevron-up';
-    const ICON_CHEVRON_DOWN = 'icon-chevron-down';
-    const ICON_RETWEET = 'icon-retweet';
-    const ICON_SHOPPING_CART = 'icon-shopping-cart';
-    const ICON_FOLDER_CLOSE = 'icon-folder-close';
-    const ICON_FOLDER_OPEN = 'icon-folder-open';
-    const ICON_RESIZE_VERTICAL = 'icon-resize-vertical';
-    const ICON_RESIZE_HORIZONTAL = 'icon-resize-horizontal';
-    const ICON_HDD = 'icon-hdd';
-    const ICON_BULLHORN = 'icon-bullhorn';
-    const ICON_BELL = 'icon-bell';
-    const ICON_CERTFICATE = 'icon-certificate';
-    const ICON_THUMBS_UP = 'icon-thumbs-up';
-    const ICON_THUMBS_DOWN = 'icon-thumbs-down';
-    const ICON_HAND_RIGHT = 'icon-hand-right';
-    const ICON_HAND_LEFT = 'icon-hand-left';
-    const ICON_HAND_UP = 'icon-hand-up';
-    const ICON_HAND_DOWN = 'icon-hand-down';
-    const ICON_CIRCLE_ARROW_RIGHT = 'icon-circle-arrow-right';
-    const ICON_CIRCLE_ARROW_LEFT = 'icon-circle-arrow-left';
-    const ICON_CIRCLE_ARROW_UP = 'icon-circle-arrow-up';
-    const ICON_CIRCLE_ARROW_DOWN = 'icon-circle-arrow-down';
-    const ICON_GLOBE = 'icon-globe';
-    const ICON_WRENCH = 'icon-wrench';
-    const ICON_TASKS = 'icon-tasks';
-    const ICON_FILTER = 'icon-filter';
-    const ICON_BRIEFCASE = 'icon-briefcase';
-    const ICON_FULLSCREEN = 'icon-fullscreen';
+    const ICON_ADJUST = 'adjust';
+    const ICON_ALIGN_CENTER = 'align-center';
+    const ICON_ALIGN_JUSTIFY = 'align-justify';
+    const ICON_ALIGN_LEFT = 'align-left';
+    const ICON_ALIGN_RIGHT = 'align-right';
+    const ICON_ARROW_DOWN = 'arrow-down';
+    const ICON_ARROW_LEFT = 'arrow-left';
+    const ICON_ARROW_RIGHT = 'arrow-right';
+    const ICON_ARROW_UP = 'arrow-up';
+    const ICON_ASTERISK = 'asterisk';
+    const ICON_BACKWARD = 'backward';
+    const ICON_BAN_CIRCLE = 'ban-circle';
+    const ICON_BARCODE = 'barcode';
+    const ICON_BELL = 'bell';
+    const ICON_BOLD = 'bold';
+    const ICON_BOOK = 'book';
+    const ICON_BOOKMARK = 'bookmark';
+    const ICON_BRIEFCASE = 'briefcase';
+    const ICON_BULLHORN = 'bullhorn';
+    const ICON_CALENDAR = 'calendar';
+    const ICON_CAMERA = 'camera';
+    const ICON_CERTIFICATE = 'certificate';
+    const ICON_CHECK = 'check';
+    const ICON_CHEVRON_DOWN = 'chevron-down';
+    const ICON_CHEVRON_LEFT = 'chevron-left';
+    const ICON_CHEVRON_RIGHT = 'chevron-right';
+    const ICON_CHEVRON_UP = 'chevron-up';
+    const ICON_CIRCLE_ARROW_DOWN = 'circle-arrow-down';
+    const ICON_CIRCLE_ARROW_LEFT = 'circle-arrow-left';
+    const ICON_CIRCLE_ARROW_RIGHT = 'circle-arrow-right';
+    const ICON_CIRCLE_ARROW_UP = 'circle-arrow-up';
+    const ICON_CLOUD = 'cloud';
+    const ICON_CLOUD_DOWNLOAD = 'cloud-download';
+    const ICON_CLOUD_UPLOAD = 'cloud-upload';
+    const ICON_COG = 'cog';
+    const ICON_COLLAPSE_DOWN = 'collapse-down';
+    const ICON_COLLAPSE_UP = 'collapse-up';
+    const ICON_COMMENT = 'comment';
+    const ICON_COMPRESSED = 'compressed';
+    const ICON_COPYRIGHT_MARK = 'copyright-mark';
+    const ICON_CREDIT_CARD = 'credit-card';
+    const ICON_CUTLERY = 'cutlery';
+    const ICON_DASHBOARD = 'dashboard';
+    const ICON_DOWNLOAD = 'download';
+    const ICON_DOWNLOAD_ALT = 'download-alt';
+    const ICON_EARPHONE = 'earphone';
+    const ICON_EDIT = 'edit';
+    const ICON_EJECT = 'eject';
+    const ICON_ENVELOPE = 'envelope';
+    const ICON_EURO = 'euro';
+    const ICON_EXCLAMATION_SIGN = 'exclamation-sign';
+    const ICON_EXPAND = 'expand';
+    const ICON_EXPORT = 'export';
+    const ICON_EYE_CLOSE = 'eye-close';
+    const ICON_EYE_OPEN = 'eye-open';
+    const ICON_FACETIME_VIDEO = 'facetime-video';
+    const ICON_FAST_BACKWARD = 'fast-backward';
+    const ICON_FAST_FORWARD = 'fast-forward';
+    const ICON_FILE = 'file';
+    const ICON_FILM = 'film';
+    const ICON_FILTER = 'filter';
+    const ICON_FIRE = 'fire';
+    const ICON_FLAG = 'flag';
+    const ICON_FLASH = 'flash';
+    const ICON_FLOPPY_DISK = 'floppy-disk';
+    const ICON_FLOPPY_OPEN = 'floppy-open';
+    const ICON_FLOPPY_REMOVE = 'floppy-remove';
+    const ICON_FLOPPY_SAVE = 'floppy-save';
+    const ICON_FLOPPY_SAVED = 'floppy-saved';
+    const ICON_FOLDER_CLOSE = 'folder-close';
+    const ICON_FOLDER_OPEN = 'folder-open';
+    const ICON_FONT = 'font';
+    const ICON_FORWARD = 'forward';
+    const ICON_FULLSCREEN = 'fullscreen';
+    const ICON_GBP = 'gbp';
+    const ICON_GIFT = 'gift';
+    const ICON_GLASS = 'glass';
+    const ICON_GLOBE = 'globe';
+    const ICON_HAND_DOWN = 'hand-down';
+    const ICON_HAND_LEFT = 'hand-left';
+    const ICON_HAND_RIGHT = 'hand-right';
+    const ICON_HAND_UP = 'hand-up';
+    const ICON_HD_VIDEO = 'hd-video';
+    const ICON_HDD = 'hdd';
+    const ICON_HEADER = 'header';
+    const ICON_HEADPHONES = 'headphones';
+    const ICON_HEART = 'heart';
+    const ICON_HEART_EMPTY = 'heart-empty';
+    const ICON_HOME = 'home';
+    const ICON_IMPORT = 'import';
+    const ICON_INBOX = 'inbox';
+    const ICON_INDENT_LEFT = 'indent-left';
+    const ICON_INDENT_RIGHT = 'indent-right';
+    const ICON_INFO_SIGN = 'info-sign';
+    const ICON_ITALIC = 'italic';
+    const ICON_LEAF = 'leaf';
+    const ICON_LINK = 'link';
+    const ICON_LIST = 'list';
+    const ICON_LIST_ALT = 'list-alt';
+    const ICON_LOCK = 'lock';
+    const ICON_LOG_IN = 'log-in';
+    const ICON_LOG_OUT = 'log-out';
+    const ICON_MAGNET = 'magnet';
+    const ICON_MAP_MARKER = 'map-marker';
+    const ICON_MINUS = 'minus';
+    const ICON_MINUS_SIGN = 'minus-sign';
+    const ICON_MOVE = 'move';
+    const ICON_MUSIC = 'music';
+    const ICON_NEW_WINDOW = 'new-window';
+    const ICON_OFF = 'off';
+    const ICON_OK = 'ok';
+    const ICON_OK_CIRCLE = 'ok-circle';
+    const ICON_OK_SIGN = 'ok-sign';
+    const ICON_OPEN = 'open';
+    const ICON_PAPERCLIP = 'paperclip';
+    const ICON_PAUSE = 'pause';
+    const ICON_PENCIL = 'pencil';
+    const ICON_PHONE = 'phone';
+    const ICON_PHONE_ALT = 'phone-alt';
+    const ICON_PICTURE = 'picture';
+    const ICON_PLANE = 'plane';
+    const ICON_PLAY = 'play';
+    const ICON_PLAY_CIRCLE = 'play-circle';
+    const ICON_PLUS = 'plus';
+    const ICON_PLUS_SIGN = 'plus-sign';
+    const ICON_PRINT = 'print';
+    const ICON_PUSHPIN = 'pushpin';
+    const ICON_QRCODE = 'qrcode';
+    const ICON_QUESTION_SIGN = 'question-sign';
+    const ICON_RANDOM = 'random';
+    const ICON_RECORD = 'record';
+    const ICON_REFRESH = 'refresh';
+    const ICON_REGISTRATION_MARK = 'registration-mark';
+    const ICON_REMOVE = 'remove';
+    const ICON_REMOVE_CIRCLE = 'remove-circle';
+    const ICON_REMOVE_SIGN = 'remove-sign';
+    const ICON_REPEAT = 'repeat';
+    const ICON_RESIZE_FULL = 'resize-full';
+    const ICON_RESIZE_HORIZONTAL = 'resize-horizontal';
+    const ICON_RESIZE_SMALL = 'resize-small';
+    const ICON_RESIZE_VERTICAL = 'resize-vertical';
+    const ICON_RETWEET = 'retweet';
+    const ICON_ROAD = 'road';
+    const ICON_SAVE = 'save';
+    const ICON_SAVED = 'saved';
+    const ICON_SCREENSHOT = 'screenshot';
+    const ICON_SD_VIDEO = 'sd-video';
+    const ICON_SEARCH = 'search';
+    const ICON_SEND = 'send';
+    const ICON_SHARE = 'share';
+    const ICON_SHARE_ALT = 'share-alt';
+    const ICON_SHOPPING_CART = 'shopping-cart';
+    const ICON_SIGNAL = 'signal';
+    const ICON_SORT = 'sort';
+    const ICON_SORT_BY_ALPHABET = 'sort-by-alphabet';
+    const ICON_SORT_BY_ALPHABET_ALT = 'sort-by-alphabet-alt';
+    const ICON_SORT_BY_ATTRIBUTES = 'sort-by-attributes';
+    const ICON_SORT_BY_ATTRIBUTES_A = 'sort-by-attributes-alt';
+    const ICON_SORT_BY_ORDER = 'sort-by-order';
+    const ICON_SORT_BY_ORDER_ALT = 'sort-by-order-alt';
+    const ICON_SOUND_5_1 = 'sound-5-1';
+    const ICON_SOUND_6_1 = 'sound-6-1';
+    const ICON_SOUND_7_1 = 'sound-7-1';
+    const ICON_SOUND_DOLBY = 'sound-dolby';
+    const ICON_SOUND_STEREO = 'sound-stereo';
+    const ICON_STAR = 'star';
+    const ICON_STAR_EMPTY = 'star-empty';
+    const ICON_STATS = 'stats';
+    const ICON_STEP_BACKWARD = 'step-backward';
+    const ICON_STEP_FORWARD = 'step-forward';
+    const ICON_STOP = 'stop';
+    const ICON_SUBTITLES = 'subtitles';
+    const ICON_TAG = 'tag';
+    const ICON_TAGS = 'tags';
+    const ICON_TASKS = 'tasks';
+    const ICON_TEXT_HEIGHT = 'text-height';
+    const ICON_TEXT_WIDTH = 'text-width';
+    const ICON_TH = 'th';
+    const ICON_TH_LARGE = 'th-large';
+    const ICON_TH_LIST = 'th-list';
+    const ICON_THUMBS_DOWN = 'thumbs-down';
+    const ICON_THUMBS_UP = 'thumbs-up';
+    const ICON_TIME = 'time';
+    const ICON_TINT = 'tint';
+    const ICON_TOWER = 'tower';
+    const ICON_TRANSFER = 'transfer';
+    const ICON_TRASH = 'trash';
+    const ICON_TREE_CONIFER = 'tree-conifer';
+    const ICON_TREE_DECIDUOUS = 'tree-deciduous';
+    const ICON_UNCHECKED = 'unchecked';
+    const ICON_UPLOAD = 'upload';
+    const ICON_USD = 'usd';
+    const ICON_USER = 'user';
+    const ICON_VOLUME_DOWN = 'volume-down';
+    const ICON_VOLUME_OFF = 'volume-off';
+    const ICON_VOLUME_UP = 'volume-up';
+    const ICON_WARNING_SIGN = 'warning-sign';
+    const ICON_WRENCH = 'wrench';
+    const ICON_ZOOM_IN = 'zoom-in';
+    const ICON_ZOOM_OUT = 'zoom-out';
 
     // Default close text.
     const CLOSE_TEXT = '&times;';
 
-    /**
-     * @var string the CSS class for displaying error summaries.
-     */
-    public static $errorSummaryCss = 'alert alert-block alert-error';
+    //
+    // PANEL
+    // --------------------------------------------------
+    const PANEL_COLOR_DEFAULT='default';
+    const PANEL_COLOR_PRIMARY='primary';
+    const PANEL_COLOR_INFO = 'info';
+    const PANEL_COLOR_SUCCESS = 'success';
+    const PANEL_COLOR_WARNING = 'warning';
+    const PANEL_COLOR_DANGER = 'danger';
 
     //
     // BASE CSS
@@ -578,7 +655,12 @@ class TbHtml extends CHtml // required in order to access the protected methods 
      */
     public static function help($text, $htmlOptions = array())
     {
-        $type = TbArray::popValue('type', $htmlOptions, self::HELP_TYPE_INLINE);
+        $type = TbArray::popValue('type', $htmlOptions, self::HELP_TYPE_INLINE);     
+
+        $color = TbArray::popValue('color', $htmlOptions);
+        if(!empty($color))
+             self::addCssClass('text-'.$color, $htmlOptions);
+
         self::addCssClass('help-' . $type, $htmlOptions);
         return self::tag($type === self::HELP_TYPE_INLINE ? 'span' : 'p', $htmlOptions, $text);
     }
@@ -692,6 +774,7 @@ class TbHtml extends CHtml // required in order to access the protected methods 
         if (!empty($layout)) {
             self::addCssClass('form-' . $layout, $htmlOptions);
         }
+        $htmlOptions=TbArray::merge(array('role'=>'form'),$htmlOptions);
         return parent::beginForm($action, $method, $htmlOptions);
     }
 
@@ -710,6 +793,19 @@ class TbHtml extends CHtml // required in order to access the protected methods 
     ) {
         return self::formTb($layout, $action, $method, $htmlOptions)
         . self::tag('div', array('style' => 'display: none'), parent::pageStateField(''));
+    }
+
+    /**
+     * Generates a static field control.
+     * @param string $text the input name.
+     * @param array $htmlOptions additional HTML attributes.
+     * @param string $tag the tag genererate for static field control.
+     * @return string the generated static field control tag.
+     */
+
+    public static function staticField($text, $htmlOptions = array(),$tag='p'){        
+        TbHtml::addCssClass('form-control-static',$htmlOptions);
+        return self::tag($tag,$htmlOptions,$text);
     }
 
     /**
@@ -826,6 +922,7 @@ class TbHtml extends CHtml // required in order to access the protected methods 
     public static function textArea($name, $value = '', $htmlOptions = array())
     {
         $htmlOptions = self::normalizeInputOptions($htmlOptions);
+        TbHtml::addCssClass('form-control',$htmlOptions);
         return parent::textArea($name, $value, $htmlOptions);
     }
 
@@ -871,6 +968,7 @@ class TbHtml extends CHtml // required in order to access the protected methods 
     public static function dropDownList($name, $select, $data, $htmlOptions = array())
     {
         $displaySize = TbArray::popValue('displaySize', $htmlOptions);
+        TbHtml::addCssClass('form-control',$htmlOptions);
         $htmlOptions = self::normalizeInputOptions($htmlOptions);
         if (!empty($displaySize)) {
             $htmlOptions['size'] = $displaySize;
@@ -1068,6 +1166,19 @@ EOD;
     {
         self::addCssClass('search-query', $htmlOptions);
         return self::textField($name, $value, $htmlOptions);
+    }
+
+    /**
+     * Generates a control group with a static field.
+     * @param string $name the input name.
+     * @param string $value the input value.
+     * @param array $htmlOptions additional HTML attributes.
+     * @return string the generated control group.
+     * @see self::controlGroup
+     */
+    public static function staticFieldControlGroup($name, $value = '', $htmlOptions = array())
+    {
+        return self::controlGroup(self::INPUT_TYPE_STATIC, $name, $value, $htmlOptions);
     }
 
     /**
@@ -1340,6 +1451,8 @@ EOD;
         $color = TbArray::popValue('color', $htmlOptions);
         $groupOptions = TbArray::popValue('groupOptions', $htmlOptions, array());
         $controlOptions = TbArray::popValue('controlOptions', $htmlOptions, array());
+        
+
         $label = TbArray::popValue('label', $htmlOptions);
         $labelOptions = TbArray::popValue('labelOptions', $htmlOptions, array());
 
@@ -1359,10 +1472,11 @@ EOD;
             ? $htmlOptions['input']
             : self::createInput($type, $name, $value, $htmlOptions, $data);
 
-        self::addCssClass('control-group', $groupOptions);
+        self::addCssClass('form-group', $groupOptions);
         if (!empty($color)) {
-            self::addCssClass($color, $groupOptions);
+            self::addCssClass('has-'.$color, $groupOptions);
         }
+
         self::addCssClass('control-label', $labelOptions);
         $output = self::openTag('div', $groupOptions);
         if ($label !== false) {
@@ -1399,6 +1513,8 @@ EOD;
     protected static function createInput($type, $name, $value, $htmlOptions = array(), $data = array())
     {
         switch ($type) {
+             case self::INPUT_TYPE_STATIC:
+                return self::staticField($name, $value, $htmlOptions);
             case self::INPUT_TYPE_TEXT:
                 return self::textField($name, $value, $htmlOptions);
             case self::INPUT_TYPE_PASSWORD:
@@ -1455,6 +1571,8 @@ EOD;
     {
         parent::clientChange('change', $htmlOptions);
 
+        TbHtml::addCssClass('form-control',$htmlOptions);
+
         $htmlOptions = self::normalizeInputOptions($htmlOptions);
 
         $addOnClasses = self::getAddOnClasses($htmlOptions);
@@ -1481,6 +1599,27 @@ EOD;
         if (!empty($addOnClasses)) {
             $output .= '</div>';
         }
+        return $output;
+    }
+
+     /**
+     * Generates a static field control for a model attribute.
+     * @param CModel $model the data model.
+     * @param string $attribute the attribute.
+     * @param array $htmlOptions additional HTML attributes.
+     * @param string $tag the tag genererate for static control.
+     * @return string the generated static control tag.   
+     */
+
+
+    public static function activeStaticField($model, $attribute, $htmlOptions = array(), $tag='p')
+    {
+        $text=self::resolveValue($model,$attribute);
+        $output='';
+        if(TbArray::popValue('hiddenField',$htmlOptions,true))
+            $output=self::activeHiddenField($model,$attribute);
+
+        $output .= self::staticField($text, $htmlOptions, $tag);
         return $output;
     }
 
@@ -1598,6 +1737,7 @@ EOD;
     public static function activeTextArea($model, $attribute, $htmlOptions = array())
     {
         $htmlOptions = self::normalizeInputOptions($htmlOptions);
+        TbHtml::addCssClass('form-control',$htmlOptions);
         return parent::activeTextArea($model, $attribute, $htmlOptions);
     }
 
@@ -1643,6 +1783,7 @@ EOD;
     public static function activeDropDownList($model, $attribute, $data, $htmlOptions = array())
     {
         $displaySize = TbArray::popValue('displaySize', $htmlOptions);
+        TbHtml::addCssClass('form-control',$htmlOptions);
         $htmlOptions = self::normalizeInputOptions($htmlOptions);
         if (!empty($displaySize)) {
             $htmlOptions['size'] = $displaySize;
@@ -1759,6 +1900,19 @@ EOD;
     {
         self::addCssClass('search-query', $htmlOptions);
         return self::activeTextField($model, $attribute, $htmlOptions);
+    }
+
+        /**
+     * Generates a control group with a static field.
+     * @param string $name the input name.
+     * @param string $value the input value.
+     * @param array $htmlOptions additional HTML attributes.
+     * @return string the generated control group.
+     * @see self::controlGroup
+     */
+    public static function activeStaticFieldControlGroup($model, $attribute, $htmlOptions = array())
+    {
+        return self::activecontrolGroup(self::INPUT_TYPE_STATIC, $model, $attribute, $htmlOptions);
     }
 
     /**
@@ -2069,16 +2223,20 @@ EOD;
             ? $htmlOptions['input']
             : self::createActiveInput($type, $model, $attribute, $htmlOptions, $data);
 
-        self::addCssClass('control-group', $groupOptions);
+        self::addCssClass('form-group', $groupOptions);
+
         if (!empty($color)) {
-            self::addCssClass($color, $groupOptions);
+            self::addCssClass('has-'.$color, $groupOptions);
         }
+
         self::addCssClass('control-label', $labelOptions);
         $output = self::openTag('div', $groupOptions);
         if ($label !== false) {
             $output .= parent::activeLabelEx($model, $attribute, $labelOptions);
         }
-        $output .= self::controls($input . $error . $help, $controlOptions);
+            
+            $output .= self::controls($input . $error . $help, $controlOptions);
+
         $output .= '</div>';
         return $output;
     }
@@ -2110,6 +2268,8 @@ EOD;
     protected static function createActiveInput($type, $model, $attribute, $htmlOptions = array(), $data = array())
     {
         switch ($type) {
+            case self::INPUT_TYPE_STATIC:
+                return self::activeStaticField($model, $attribute, $htmlOptions);
             case self::INPUT_TYPE_TEXT:
                 return self::activeTextField($model, $attribute, $htmlOptions);
             case self::INPUT_TYPE_PASSWORD:
@@ -2163,9 +2323,11 @@ EOD;
      */
     public static function errorSummary($model, $header = null, $footer = null, $htmlOptions = array())
     {
-        // kind of a quick fix but it will do for now.
-        self::addCssClass(self::$errorSummaryCss, $htmlOptions);
-        return parent::errorSummary($model, $header, $footer, $htmlOptions);
+        $htmlOptions['block'] = true;
+        $message = parent::errorSummary($model, $header, $footer, $htmlOptions);
+        if(!empty($message))
+        return self::alert(TbHtml::ALERT_COLOR_DANGER, $message, $htmlOptions );       
+
     }
 
     /**
@@ -2179,7 +2341,9 @@ EOD;
     {
         parent::resolveName($model, $attribute); // turn [a][b]attr into attr
         $error = $model->getError($attribute);
+    
         return !empty($error) ? self::help($error, $htmlOptions) : '';
+
     }
 
     /**
@@ -2195,7 +2359,7 @@ EOD;
     {
         parent::resolveNameID($model, $attribute, $htmlOptions);
         parent::clientChange('change', $htmlOptions);
-
+        TbHtml::addCssClass('form-control',$htmlOptions);
         $htmlOptions = self::normalizeInputOptions($htmlOptions);
 
         $addOnClasses = self::getAddOnClasses($htmlOptions);
@@ -2234,10 +2398,10 @@ EOD;
     {
         $classes = array();
         if (TbArray::getValue('append', $htmlOptions)) {
-            $classes[] = 'input-append';
+            $classes[] = 'input-group';
         }
         if (TbArray::getValue('prepend', $htmlOptions)) {
-            $classes[] = 'input-prepend';
+            $classes[] = 'input-group';
         }
         return !empty($classes) ? implode(' ', $classes) : $classes;
     }
@@ -2251,7 +2415,7 @@ EOD;
     protected static function inputAddOn($addOn, $htmlOptions)
     {
         $addOnOptions = TbArray::popValue('addOnOptions', $htmlOptions, array());
-        self::addCssClass('add-on', $addOnOptions);
+        self::addCssClass('input-group-addon', $addOnOptions);
         return strpos($addOn, 'btn') === false // buttons should not be wrapped in a span
             ? self::tag('span', $addOnOptions, $addOn)
             : $addOn;
@@ -2301,7 +2465,7 @@ EOD;
     {
         self::addCssClass('controls', $htmlOptions);
         if (TbArray::popValue('row', $htmlOptions, false)) {
-            self::addCssClass('controls-row', $htmlOptions);
+            self::addCssClass('row', $htmlOptions);
         }
         $before = TbArray::popValue('before', $htmlOptions, '');
         $after = TbArray::popValue('after', $htmlOptions, '');
@@ -2507,7 +2671,9 @@ EOD;
         $color = TbArray::popValue('color', $htmlOptions);
         if (!empty($color)) {
             self::addCssClass('btn-' . $color, $htmlOptions);
-        }
+        } else
+             self::addCssClass('btn-default', $htmlOptions);
+
         $size = TbArray::popValue('size', $htmlOptions);
         if (!empty($size)) {
             self::addCssClass('btn-' . $size, $htmlOptions);
@@ -2607,6 +2773,10 @@ EOD;
                 $htmlOptions['ajax'] = $ajaxOptions;
                 return parent::htmlButton($label, $htmlOptions);
 
+            case self::BUTTON_TYPE_AJAXSUBMIT:
+                $htmlOptions['ajax'] = $ajaxOptions;
+                return parent::ajaxSubmitButton($label, $url, $ajaxOptions, $htmlOptions);
+
             case self::BUTTON_TYPE_INPUTBUTTON:
                 return parent::button($label, $htmlOptions);
 
@@ -2616,6 +2786,9 @@ EOD;
 
             case self::BUTTON_TYPE_LINK:
                 return self::link($label, $url, $htmlOptions);
+
+            case self::BUTTON_TYPE_LABEL:
+                return parent::tag('label', $htmlOptions, $label);
 
             default:
                 throw new CException('Invalid button type "' . $type . '".');
@@ -2696,8 +2869,12 @@ EOD;
     {
         if (is_string($icon)) {
             if (strpos($icon, 'icon') === false) {
-                $icon = 'icon-' . implode(' icon-', explode(' ', $icon));
+                $icon = 'glyphicon-' . implode('glyphicon-', explode(' ', $icon));
             }
+            // default class 
+            // refer to http://getbootstrap.com/components/#glyphicons-how-to-use
+            self::addCssClass('glyphicon',$htmlOptions);
+
             self::addCssClass($icon, $htmlOptions);
             $color = TbArray::popValue('color', $htmlOptions);
             if (!empty($color) && $color === self::ICON_COLOR_WHITE) {
@@ -2801,17 +2978,26 @@ EOD;
             if (TbArray::popValue('vertical', $htmlOptions, false)) {
                 self::addCssClass('btn-group-vertical', $htmlOptions);
             }
-            $toggle = TbArray::popValue('toggle', $htmlOptions);
-            if (!empty($toggle)) {
-                $htmlOptions['data-toggle'] = 'buttons-' . $toggle;
+            $toggle = TbArray::popValue('toggle', $htmlOptions, false);
+            $toggleOptions=TbArray::popValue('toggleOptions', $htmlOptions, array());
+            $id=TbArray::popValue('id', $htmlOptions, 'buttons');
+            $nameToggle=TbArray::popValue('name',$toggleOptions,'options');
+
+            if ($toggle) {
+                $htmlOptions['data-toggle'] = 'buttons';
             }
             $parentOptions = array(
                 'color' => TbArray::popValue('color', $htmlOptions),
                 'size' => TbArray::popValue('size', $htmlOptions),
-                'disabled' => TbArray::popValue('disabled', $htmlOptions)
+                'disabled' => TbArray::popValue('disabled', $htmlOptions),               
             );
+
+            if(TbArray::popValue('justified', $htmlOptions,false))
+                TbHtml::addCssClass('btn-group-justified',$htmlOptions);
+
+
             $output = self::openTag('div', $htmlOptions);
-            foreach ($buttons as $buttonOptions) {
+            foreach ($buttons as $key => $buttonOptions) {
                 if (isset($buttonOptions['visible']) && $buttonOptions['visible'] === false) {
                     continue;
                 }
@@ -2823,10 +3009,38 @@ EOD;
                 $buttonLabel = TbArray::popValue('label', $buttonOptions, '');
                 $buttonOptions = TbArray::copyValues(array('color', 'size', 'disabled'), $parentOptions, $buttonOptions);
                 $items = TbArray::popValue('items', $buttonOptions, array());
+
+                // will applied for toggle button
+                $value= TbArray::popValue('value',$buttonOptions,1);
+                $active=TbArray::popValue('active', $buttonOptions, false);
+                if($active)
+                    TbHtml::addCssClass('active', $buttonOptions);
+
+                $controlId=TbArray::popValue('controlId',$buttonOptions,$id.'_'.$key);
+
                 if (!empty($items)) {
                     $output .= self::buttonDropdown($buttonLabel, $items, $buttonOptions);
                 } else {
-                    $output .= self::linkButton($buttonLabel, $buttonOptions);
+                    
+                    $toggleOptions['uncheckValue']=null;
+                    $toggleOptions['value']=$value;
+                    $toggleOptions['id']=$controlId;
+
+                    switch ($toggle) {
+                        case self::BUTTON_TOGGLE_CHECKBOX:
+                            $checkbox=self::checkBox($nameToggle,$active,$toggleOptions);
+                            $output .= self::btn(self::BUTTON_TYPE_LABEL,$checkbox.$buttonLabel,$buttonOptions);
+                            break;
+                        case self::BUTTON_TOGGLE_RADIO:
+                            $radio=self::radioButton($nameToggle,$active,$toggleOptions);
+                            $output .= self::btn(self::BUTTON_TYPE_LABEL,$radio.$buttonLabel,$buttonOptions);
+                            break;
+                        default:
+                            $output .= self::linkButton($buttonLabel, $buttonOptions);
+                            break;
+                    }
+
+                    
                 }
             }
             $output .= '</div>';
@@ -3092,10 +3306,14 @@ EOD;
      */
     protected static function menuDropdown($label, $url, $items, $htmlOptions, $depth = 0)
     {
-        self::addCssClass($depth === 0 ? 'dropdown' : 'dropdown-submenu', $htmlOptions);
+        // self::addCssClass($depth === 0 ? 'dropdown' : 'dropdown-submenu', $htmlOptions);
+        self::addCssClass('dropdown', $htmlOptions);
+
         TbArray::defaultValue('role', 'menuitem', $htmlOptions);
+
         $linkOptions = TbArray::popValue('linkOptions', $htmlOptions, array());
         $menuOptions = TbArray::popValue('menuOptions', $htmlOptions, array());
+
         self::addCssClass('dropdown-menu', $menuOptions);
         if ($depth === 0) {
             $defaultId = parent::ID_PREFIX . parent::$count++;
@@ -3244,15 +3462,20 @@ EOD;
             self::addCssClass('navbar-' . $display, $htmlOptions);
         }
         $color = TbArray::popValue('color', $htmlOptions);
+
         if (!empty($color)) {
             self::addCssClass('navbar-' . $color, $htmlOptions);
-        }
-        $innerOptions = TbArray::popValue('innerOptions', $htmlOptions, array());
-        self::addCssClass('navbar-inner', $innerOptions);
-        $output = self::openTag('div', $htmlOptions);
-        $output .= self::tag('div', $innerOptions, $content);
-        $output .= '</div>';
-        return $output;
+        } else
+            self::addCssClass('navbar-default', $htmlOptions);
+
+
+        // $innerOptions = TbArray::popValue('innerOptions', $htmlOptions, array());
+        // self::addCssClass('navbar-inner', $innerOptions);
+        // $output = self::openTag('div', $htmlOptions);
+        // $output .= self::tag('div', $innerOptions, $content);
+        // $output .= '</div>';
+
+        return self::tag('nav',$htmlOptions,$content);
     }
 
     /**
@@ -3264,9 +3487,41 @@ EOD;
      */
     public static function navbarBrandLink($label, $url, $htmlOptions = array())
     {
-        self::addCssClass('brand', $htmlOptions);
+        self::addCssClass('navbar-brand', $htmlOptions);
         return self::link($label, $url, $htmlOptions);
     }
+
+     /**
+     * Generates a button for the navbar.
+     * @param string $label the label.
+     * @param array $htmlOptions additional HTML attributes.
+     * @param string $type the button type.
+     * @return string the generated text block.
+     */
+    public static function navbarButton($label, $htmlOptions = array())
+    {
+        self::addCssClass('navbar-btn', $htmlOptions);
+        
+        $type=TbArray::popValue('type',$htmlOptions);
+        if(empty($type))
+            $type=TbHtml::BUTTON_TYPE_HTML;
+
+        return self::btn($type,$label,$htmlOptions);
+    }
+
+    /**
+     * Generates a link for the navbar.
+     * @param string $text the link text.
+     * @param string $url the link url.
+     * @param array $htmlOptions additional HTML attributes.     
+     * @return string the generated text block.
+     */
+    public static function navbarLink($text, $url, $htmlOptions = array())
+    {
+        self::addCssClass('navbar-link', $htmlOptions);
+        return self::link($text,$url,$htmlOptions);
+    }
+
 
     /**
      * Generates a text for the navbar.
@@ -3326,11 +3581,13 @@ EOD;
      */
     public static function navbarCollapseLink($target, $htmlOptions = array())
     {
-        self::addCssClass('btn btn-navbar', $htmlOptions);
+        self::addCssClass('navbar-toggle', $htmlOptions);
         $htmlOptions['data-toggle'] = 'collapse';
+        $htmlOptions['type'] = 'button';
         $htmlOptions['data-target'] = $target;
-        $content = '<span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>';
-        return self::tag('a', $htmlOptions, $content);
+
+        $content = '<span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>';
+        return self::tag('button', $htmlOptions, $content);
     }
 
     // Breadcrumbs
@@ -3384,9 +3641,9 @@ EOD;
             if (!empty($align)) {
                 self::addCssClass('pagination-' . $align, $htmlOptions);
             }
-            $listOptions = TbArray::popValue('listOptions', $htmlOptions, array());
-            $output = self::openTag('div', $htmlOptions);
-            $output .= self::openTag('ul', $listOptions);
+            // $listOptions = TbArray::popValue('listOptions', $htmlOptions, array());
+            $output = self::openTag('ul', $htmlOptions);
+            // $output .= self::openTag('ul', $listOptions);
             foreach ($items as $itemOptions) {
                 // todo: consider removing the support for htmlOptions.
                 $options = TbArray::popValue('htmlOptions', $itemOptions, array());
@@ -3397,7 +3654,7 @@ EOD;
                 $url = TbArray::popValue('url', $itemOptions, false);
                 $output .= self::paginationLink($label, $url, $itemOptions);
             }
-            $output .= '</ul></div>';
+            $output .= '</ul>';
             return $output;
         }
         return '';
@@ -3468,7 +3725,7 @@ EOD;
         }
         if (TbArray::popValue('disabled', $htmlOptions, false)) {
             self::addCssClass('disabled', $htmlOptions);
-        }
+        }        
         $content = self::link($label, $url, $linkOptions);
         return self::tag('li', $htmlOptions, $content);
     }
@@ -3486,10 +3743,9 @@ EOD;
     public static function labelTb($label, $htmlOptions = array())
     {
         self::addCssClass('label', $htmlOptions);
-        $color = TbArray::popValue('color', $htmlOptions);
-        if (!empty($color)) {
-            self::addCssClass('label-' . $color, $htmlOptions);
-        }
+        $color = TbArray::popValue('color', $htmlOptions, TbHtml::LABEL_COLOR_DEFAULT);
+        self::addCssClass('label-' . $color, $htmlOptions);
+        
         return self::tag('span', $htmlOptions, $label);
     }
 
@@ -3514,19 +3770,28 @@ EOD;
     // --------------------------------------------------
 
     /**
-     * Generates a hero unit.
+     * Generates a jumbotron unit.
      * @param string $heading the heading text.
      * @param string $content the content text.
      * @param array $htmlOptions additional HTML attributes.
      * @return string the generated hero unit.
      */
-    public static function heroUnit($heading, $content, $htmlOptions = array())
+    public static function jumbotron($heading, $content, $htmlOptions = array())
     {
-        self::addCssClass('hero-unit', $htmlOptions);
+        self::addCssClass('jumbotron', $htmlOptions);
         $headingOptions = TbArray::popValue('headingOptions', $htmlOptions, array());
+        $fluid=TbArray::popValue('fluid', $htmlOptions, true);
+
         $output = self::openTag('div', $htmlOptions);
+        
+        if(!$fluid)
+            $output .= self::openTag('div',array('class'=>'containter'));
+
         $output .= self::tag('h1', $headingOptions, $heading);
         $output .= $content;
+
+        if(!$fluid) $output .= '</div>';
+
         $output .= '</div>';
         return $output;
     }
@@ -4115,9 +4380,9 @@ EOD;
             $innerOptions = TbArray::popValue('innerOptions', $htmlOptions, array());
             self::addCssClass('carousel-inner', $innerOptions);
             $prevOptions = TbArray::popValue('prevOptions', $htmlOptions, array());
-            $prevLabel = TbArray::popValue('label', $prevOptions, '&lsaquo;');
+            $prevLabel = TbArray::popValue('label', $prevOptions, '<span class="icon-prev"></span>');
             $nextOptions = TbArray::popValue('nextOptions', $htmlOptions, array());
-            $nextLabel = TbArray::popValue('label', $nextOptions, '&rsaquo;');
+            $nextLabel = TbArray::popValue('label', $nextOptions, '<span class="icon-next"></span>');
             $hidePrevAndNext = TbArray::popValue('hidePrevAndNext', $htmlOptions, false);
             $output = self::openTag('div', $htmlOptions);
             $output .= self::carouselIndicators($selector, count($items), $indicatorOptions);
@@ -4236,6 +4501,87 @@ EOD;
         return $output;
     }
 
+    /**
+     * Generates a panel
+     * @param string $content the panel content.
+     * @param array $htmlOptions additional HTML attributes.
+     * @return string the generated panel.
+     */
+    public static function panel($content, $htmlOptions=array())
+    {
+        self::addCssClass('panel',$htmlOptions);
+
+        $color = TbArray::popValue('color',$htmlOptions,TbHtml::PANEL_COLOR_DEFAULT);
+        self::addCssClass('panel-'.$color,$htmlOptions);
+
+        $output = self::openTag('div',$htmlOptions);
+        $output .= $content;
+        $output .= '</div>';
+
+        return $output;
+    }
+
+    /**
+     * Generates a panel header
+     * @param string $text the panel header text.
+     * @param array $htmlOptions additional HTML attributes.
+     * @return string the generated panel.
+     */
+    public static function panelHeader($text, $htmlOptions=array())
+    {
+
+        self::addCssClass('panel-heading',$htmlOptions);
+
+        $headerTag = TbArray::popValue('headerTag',$htmlOptions,'h3');
+
+        // consider to remove title htmlOptions
+        $titleOptions = TbArray::popValue('titleOptions',$htmlOptions,array());
+        self::addCssClass('panel-title',$titleOptions);
+
+        $output = self::openTag('div',$htmlOptions);
+
+        if($headerTag === false)
+        {
+            $output .= $text;
+        } 
+        else
+        {
+            $output .= self::tag($headerTag,$titleOptions,$text);
+        }
+        $output .= '</div>';
+
+      if(!empty($text))
+            return $output;
+    }
+
+     /**
+     * Generates a panel body
+     * @param string $content the panel body content.
+     * @param array $htmlOptions additional HTML attributes.
+     * @return string the generated panel.
+     */
+    public static function panelBody($content, $htmlOptions=array()) 
+    {
+        self::addCssClass('panel-body',$htmlOptions);
+        //consider to remove htmlOptions support
+        return self::tag('div',$htmlOptions,$content);
+
+    }
+
+     /**
+     * Generates a panel footer
+     * @param string $text the panel footer text.
+     * @param array $htmlOptions additional HTML attributes.
+     * @return string the generated panel.
+     */
+    public static function panelFooter($text, $htmlOptions=array())
+    {
+        self::addCssClass('panel-footer',$htmlOptions);
+        //consider to remove htmlOptions support
+        if(!empty($text))
+        return self::tag('div',$htmlOptions,$text);    
+    }
+
     // UTILITIES
     // --------------------------------------------------
 
@@ -4284,13 +4630,14 @@ EOD;
 
     /**
      * Adds the grid span class to the given options is applicable.
+     * Compability to 2.3.3 version
      * @param array $htmlOptions the HTML attributes.
      */
     protected static function addSpanClass(&$htmlOptions)
     {
         $span = TbArray::popValue('span', $htmlOptions);
         if (!empty($span)) {
-            self::addCssClass('span' . $span, $htmlOptions);
+            self::addCssClass('col-md-' . $span, $htmlOptions);
         }
     }
 

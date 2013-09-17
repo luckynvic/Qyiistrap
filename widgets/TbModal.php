@@ -119,9 +119,11 @@ class TbModal extends CWidget
 
         TbArray::defaultValue('id', $this->getId(), $this->htmlOptions);
         TbArray::defaultValue('role', 'dialog', $this->htmlOptions);
+        TbArray::defaultValue('aria-hidden','true',$this->htmlOptions);
+
         TbArray::defaultValue('tabindex', '-1', $this->htmlOptions);
 
-        TbHtml::addCssClass('modal hide', $this->htmlOptions);
+        TbHtml::addCssClass('modal', $this->htmlOptions);
         if ($this->fade) {
             TbHtml::addCssClass('fade', $this->htmlOptions);
         }
@@ -188,11 +190,18 @@ class TbModal extends CWidget
                 $this->buttonOptions['data-remote'] = CHtml::normalizeUrl($this->remote);
             }
 
+            
+
             $selector = '#' . $this->htmlOptions['id'];
+
             $label = TbArray::popValue('label', $this->buttonOptions, 'button');
             $attr = isset($this->buttonOptions['data-remote']) ? 'data-target' : 'href';
+            $type = TbArray::popValue('type',$this->buttonOptions,TbHtml::BUTTON_TYPE_HTML);            
             TbArray::defaultValue($attr, $selector, $this->buttonOptions);
-            echo TbHtml::button($label, $this->buttonOptions);
+            if($type==TbHtml::BUTTON_TYPE_HTML)
+                echo TbHtml::button($label, $this->buttonOptions);
+            else
+                echo TbHtml::linkButton($label, $this->buttonOptions);
         }
     }
 
@@ -202,11 +211,13 @@ class TbModal extends CWidget
     public function renderModal()
     {
         echo TbHtml::openTag('div', $this->htmlOptions) . PHP_EOL;
-
+        echo TbHtml::openTag('div',array('class'=>'modal-dialog')). PHP_EOL;
+        echo TbHtml::openTag('div',array('class'=>'modal-content')). PHP_EOL;
         $this->renderModalHeader();
         $this->renderModalBody();
         $this->renderModalFooter();
-
+        echo '</div>'. PHP_EOL;
+        echo '</div>'. PHP_EOL;
         echo '</div>' . PHP_EOL;
     }
 
@@ -217,9 +228,9 @@ class TbModal extends CWidget
     {
         echo '<div class="modal-header">' . PHP_EOL;
         if ($this->closeText) {
-            echo TbHtml::closeButton($this->closeText, array('data-dismiss' => 'modal'));
+            echo TbHtml::closeButton($this->closeText, array('data-dismiss' => 'modal','aria-hidden'=>'true','class'=>'close'));
         }
-        echo TbHtml::tag('h3', array(), $this->header);
+        echo TbHtml::tag('h4', array(), $this->header);
         echo '</div>' . PHP_EOL;
     }
 

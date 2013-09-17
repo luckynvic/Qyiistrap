@@ -1,7 +1,10 @@
-Yiistrap
-========
+#Yiistrap Bootstrap 3
 
-[![Latest Stable Version](https://poser.pugx.org/crisu83/yiistrap/v/stable.png)](https://packagist.org/packages/crisu83/yiistrap)
-[![Build Status](https://travis-ci.org/Crisu83/yiistrap.png)](https://travis-ci.org/Crisu83/yiistrap)
+Twitter Bootstrap 3 for Yii.
 
-Twitter Bootstrap for Yii.
+This extension developed base on yiistrap RC 1.1.1 (https://github.com/Crisu83/yiistrap).
+
+Documentation can found [http://www.getyiistrap.com](http://www.getyiistrap.com)
+
+## Development Status
+Alpha

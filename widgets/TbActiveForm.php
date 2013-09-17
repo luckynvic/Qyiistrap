@@ -31,12 +31,18 @@ class TbActiveForm extends CActiveForm
      * @var string the CSS class name for success messages.
      */
     public $successMessageCssClass = 'success';
-
+    /**
+     * @var string the CSS class name for label (only affected if layout=TbHtml::FORM_LAYOUT_HORIZONTAL.
+     */
+    public $labelCssClass='col-md-2';
+    /**
+     * @var string the CSS class name for control group (only affected if layout=TbHtml::FORM_LAYOUT_HORIZONTAL.
+     */
+    public $controlGroupCssClass='col-md-10';
     /**
      * @var boolean whether to hide inline errors. Defaults to false.
      */
     public $hideInlineErrors = false;
-
     /**
      * Initializes the widget.
      */
@@ -44,6 +50,7 @@ class TbActiveForm extends CActiveForm
     {
         $this->attachBehavior('TbWidget', new TbWidget);
         $this->copyId();
+        
         if ($this->stateful) {
             echo TbHtml::statefulFormTb($this->layout, $this->action, $this->method, $this->htmlOptions);
         } else {
@@ -130,6 +137,7 @@ class TbActiveForm extends CActiveForm
                     ) . "\n}";
             }
         }
+
         $html = TbHtml::error($model, $attribute, $htmlOptions);
         if ($html === '') {
             $htmlOptions['type'] = $this->helpType;
@@ -165,6 +173,20 @@ class TbActiveForm extends CActiveForm
         }
         $this->summaryID = $htmlOptions['id'];
         return $html;
+    }
+
+     /**
+     * Generates a static field control for a model attribute.
+     * @param CModel $model the data model.
+     * @param string $attribute the attribute.
+     * @param array $htmlOptions additional HTML attributes.
+     * @param string $tag the tag genererate for static control.
+     * @return string the generated static field control tag.   
+     */
+
+    public function staticField($model, $attribute, $htmlOptions = array(), $tag='p')
+    {
+        return TbHtml::activeStaticField($model, $attribute, $htmlOptions, $tag);
     }
 
     /**
@@ -418,6 +440,22 @@ class TbActiveForm extends CActiveForm
     {
         return TbHtml::activeSearchQueryField($model, $attribute, $htmlOptions);
     }
+
+         /**
+     * Generates a static field control for a model attribute.
+     * @param CModel $model the data model.
+     * @param string $attribute the attribute.
+     * @param array $htmlOptions additional HTML attributes.
+     * @param string $tag the tag genererate for static control.
+     * @return string the generated static field control tag.   
+     */
+
+    public function staticFieldControlGroup($model, $attribute, $htmlOptions = array())
+    {
+        $htmlOptions = $this->processRowOptions($model, $attribute, $htmlOptions);
+        return TbHtml::activeStaticFieldControlGroup($model, $attribute, $htmlOptions);
+    }
+
 
     /**
      * Generates a control group with a text field for a model attribute.
@@ -708,9 +746,25 @@ class TbActiveForm extends CActiveForm
         if (!$this->hideInlineErrors) {
             $options['error'] = $error;
         }
+        $controlGroupCssClass=TbArray::popValue('controlGroupCssClass',$options);
+        $labelCssClass=TbArray::popValue('labelCssClass',$options);
+        if($this->layout==TbHtml::FORM_LAYOUT_HORIZONTAL){
+
+        if(!empty($controlGroupCssClass))
+            TbHtml::addCssClass($controlGroupCssClass, $options['controlOptions']);
+        else
+            TbHtml::addCssClass($this->controlGroupCssClass, $options['controlOptions']);
+
+        if(!empty($labelCssClass))
+            TbHtml::addCssClass($labelCssClass, $options['labelOptions']);
+        else
+            TbHtml::addCssClass($this->labelCssClass, $options['labelOptions']);
+        }
+
         $helpOptions = TbArray::popValue('helpOptions', $options, array());
         $helpOptions['type'] = $this->helpType;
         $options['helpOptions'] = $helpOptions;
+
         return $options;
     }
 }

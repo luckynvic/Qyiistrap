@@ -38,6 +38,8 @@ class TbApi extends CApplicationComponent
      */
     public $forceCopyAssets = false;
 
+    public $themeCssFile;
+
     private $_assetsUrl;
 
     /**
@@ -50,23 +52,24 @@ class TbApi extends CApplicationComponent
             $fileName = YII_DEBUG ? 'bootstrap.css' : 'bootstrap.min.css';
             $url = $this->getAssetsUrl() . '/css/' . $fileName;
         }
-        Yii::app()->clientScript->registerCssFile($url);
+        $cs = Yii::app()->getClientScript();
+        
+        $cs->registerCssFile($url);
+
+        $cs->registerMetaTag('width=device-width, initial-scale=1.0', 'viewport');
     }
 
-    /**
-     * Registers the responsive Bootstrap CSS.
-     * @param string $url the URL to the CSS file to register.
-     */
-    public function registerResponsiveCss($url = null)
+    public function registerThemeCss($url = null)
     {
-        if ($url === null) {
-            $fileName = YII_DEBUG ? 'bootstrap-responsive.css' : 'bootstrap-responsive.min.css';
-            $url = $this->getAssetsUrl() . '/css/' . $fileName;
+       if ($url === null) {            
+            $url = $this->themeCssFile;
         }
-        /** @var CClientScript $cs */
         $cs = Yii::app()->getClientScript();
-        $cs->registerMetaTag('width=device-width, initial-scale=1.0', 'viewport');
-        $cs->registerCssFile($url);
+        if(isset($url)){
+         $cs = Yii::app()->getClientScript();
+         $cs->registerCssFile($url);            
+        }
+
     }
 
     /**
@@ -90,7 +93,7 @@ class TbApi extends CApplicationComponent
     public function registerAllCss()
     {
         $this->registerCoreCss();
-        $this->registerResponsiveCss();
+        $this->registerThemeCss();
         $this->registerYiistrapCss();
     }
 
@@ -163,6 +166,8 @@ class TbApi extends CApplicationComponent
         if (!isset($options['selector'])) {
             $options['selector'] = 'a[rel=tooltip]';
         }
+        $options['container']='body';
+
         $this->registerPlugin(self::PLUGIN_TOOLTIP, $selector, $options);
     }
 
