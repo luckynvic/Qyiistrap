@@ -1,4 +1,4 @@
-#Yiistrap Bootstrap 3
+#QYiistrap Bootstrap 3
 
 Twitter Bootstrap 3 for Yii.
 
