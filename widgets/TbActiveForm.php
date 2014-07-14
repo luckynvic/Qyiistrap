@@ -32,11 +32,11 @@ class TbActiveForm extends CActiveForm
      */
     public $successMessageCssClass = 'success';
     /**
-     * @var string the CSS class name for label (only affected if layout=TbHtml::FORM_LAYOUT_HORIZONTAL.
+     * @var string the CSS class name for label (only affected if layout=TbHtml::FORM_LAYOUT_HORIZONTAL or TbHtml::FORM_LAYOUT_INLINE.
      */
     public $labelCssClass='col-md-2';
     /**
-     * @var string the CSS class name for control group (only affected if layout=TbHtml::FORM_LAYOUT_HORIZONTAL.
+     * @var string the CSS class name for control group (only affected if layout=TbHtml::FORM_LAYOUT_HORIZONTAL or TbHtml::FORM_LAYOUT_INLINE.
      */
     public $controlGroupCssClass='col-md-10';
     /**
@@ -748,17 +748,18 @@ class TbActiveForm extends CActiveForm
         }
         $controlGroupCssClass=TbArray::popValue('controlGroupCssClass',$options);
         $labelCssClass=TbArray::popValue('labelCssClass',$options);
-        if($this->layout==TbHtml::FORM_LAYOUT_HORIZONTAL){
+        if(in_array($this->layout,array(TbHtml::FORM_LAYOUT_HORIZONTAL,TbHtml::FORM_LAYOUT_INLINE))){
+            if(!empty($controlGroupCssClass))
+                TbHtml::addCssClass($controlGroupCssClass, $options['controlOptions']);
+            else
+                TbHtml::addCssClass($this->controlGroupCssClass, $options['controlOptions']);
 
-        if(!empty($controlGroupCssClass))
-            TbHtml::addCssClass($controlGroupCssClass, $options['controlOptions']);
-        else
-            TbHtml::addCssClass($this->controlGroupCssClass, $options['controlOptions']);
+            if(!empty($labelCssClass))
+                TbHtml::addCssClass($labelCssClass, $options['labelOptions']);
+            else
+                TbHtml::addCssClass($this->labelCssClass, $options['labelOptions']);
 
-        if(!empty($labelCssClass))
-            TbHtml::addCssClass($labelCssClass, $options['labelOptions']);
-        else
-            TbHtml::addCssClass($this->labelCssClass, $options['labelOptions']);
+            $options['row']=true;
         }
 
         $helpOptions = TbArray::popValue('helpOptions', $options, array());

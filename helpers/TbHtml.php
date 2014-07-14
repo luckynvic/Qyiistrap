@@ -515,7 +515,7 @@ class TbHtml extends CHtml // required in order to access the protected methods 
      * @param array $htmlOptions additional HTML attributes.
      * @return string the generated text.
      */
-    public static function small($text, $htmlOptions = array())
+    public static function small($text, $htmlOptions=  array())
     {
         return self::tag('small', $htmlOptions, $text);
     }
@@ -1451,6 +1451,7 @@ EOD;
         $color = TbArray::popValue('color', $htmlOptions);
         $groupOptions = TbArray::popValue('groupOptions', $htmlOptions, array());
         $controlOptions = TbArray::popValue('controlOptions', $htmlOptions, array());
+        $row = TbArray::popValue('row',$htmlOptions,false);
         
 
         $label = TbArray::popValue('label', $htmlOptions);
@@ -1479,10 +1480,21 @@ EOD;
 
         self::addCssClass('control-label', $labelOptions);
         $output = self::openTag('div', $groupOptions);
-        if ($label !== false) {
-            $output .= parent::label($label, $name, $labelOptions);
+        if($row)
+        {
+            // separate row so help doesnst resize to control
+            // input
+            $row1 = parent::label($label, $name, $labelOptions).self::controls($input, $controlOptions);
+            $output .= self::controlsRow($row1);
+            // help
+            $row2 = parent::label('',$name,$labelOptions).self::controls($help,$controlOptions);
+            $output .= self::controlsRow($row2);
+        } else {
+            if ($label !== false) {
+                $output .= parent::label($label, $name, $labelOptions);
+            }            
+            $output .= self::controls($input . $help, $controlOptions);
         }
-        $output .= self::controls($input . $help, $controlOptions);
         $output .= '</div>';
         return $output;
     }
@@ -2202,6 +2214,7 @@ EOD;
         $controlOptions = TbArray::popValue('controlOptions', $htmlOptions, array());
         $label = TbArray::popValue('label', $htmlOptions);
         $labelOptions = TbArray::popValue('labelOptions', $htmlOptions, array());
+        $row = TbArray::popValue('row', $htmlOptions);
 
         if (in_array($type, array(self::INPUT_TYPE_CHECKBOX, self::INPUT_TYPE_RADIOBUTTON))) {
             $htmlOptions['label'] = isset($label) ? $label : $model->getAttributeLabel($attribute);
@@ -2231,11 +2244,24 @@ EOD;
 
         self::addCssClass('control-label', $labelOptions);
         $output = self::openTag('div', $groupOptions);
+        if($row)
+        {
+            // separate row so help doesnst resize to control
+            // input
+            $row1 = parent::activeLabelEx($model, $attribute, $labelOptions).self::controls($input, $controlOptions);
+            $output .= self::controlsRow($row1);
+            // help
+            if($error!=='' || $help!=='') {
+                $row2 = parent::tag('label',$labelOptions).self::controls($error.$help,array('class'=>'col-md-9'));
+                $output .= self::controlsRow($row2);
+            }
+        } else {
+
         if ($label !== false) {
             $output .= parent::activeLabelEx($model, $attribute, $labelOptions);
         }
-            
             $output .= self::controls($input . $error . $help, $controlOptions);
+        }
 
         $output .= '</div>';
         return $output;
@@ -2863,17 +2889,21 @@ EOD;
      * @param string $icon the icon type.
      * @param array $htmlOptions additional HTML attributes.
      * @param string $tagName the icon HTML tag.
+     * @param string $iconClass the icon class and icon class prefix
      * @return string the generated icon.
      */
     public static function icon($icon, $htmlOptions = array(), $tagName = 'i')
     {
+
+        $iconClass=TbArray::popValue('iconVendor',$htmlOptions,'glyphicon');
+
         if (is_string($icon)) {
-            if (strpos($icon, 'icon') === false) {
-                $icon = 'glyphicon-' . implode('glyphicon-', explode(' ', $icon));
-            }
+            // if (strpos($icon, 'icon') === false) {
+                $icon = $iconClass.'-' . implode($iconClass.'-', explode(' ', $icon));
+            // }
             // default class 
             // refer to http://getbootstrap.com/components/#glyphicons-how-to-use
-            self::addCssClass('glyphicon',$htmlOptions);
+            self::addCssClass($iconClass,$htmlOptions);
 
             self::addCssClass($icon, $htmlOptions);
             $color = TbArray::popValue('color', $htmlOptions);
@@ -3217,6 +3247,7 @@ EOD;
         if ($type !== self::NAV_TYPE_LIST && $stacked) {
             self::addCssClass('nav-stacked', $htmlOptions);
         }
+
         return self::menu($items, $htmlOptions);
     }
 
@@ -3232,6 +3263,8 @@ EOD;
         // todo: consider making this method protected.
         if (!empty($items)) {
             $htmlOptions['role'] = 'menu';
+            $iconOptions = TbArray::popValue('iconOptions',$htmlOptions,array());
+
             $output = self::openTag('ul', $htmlOptions);
             foreach ($items as $itemOptions) {
                 if (is_string($itemOptions)) {
@@ -3257,7 +3290,7 @@ EOD;
                     }
                     $icon = TbArray::popValue('icon', $itemOptions);
                     if (!empty($icon)) {
-                        $label = self::icon($icon) . ' ' . $label;
+                        $label = self::icon($icon, $iconOptions) . ' ' . $label;
                     }
                     $items = TbArray::popValue('items', $itemOptions, array());
                     $url = TbArray::popValue('url', $itemOptions, false);
@@ -3268,7 +3301,8 @@ EOD;
                             $itemOptions['linkOptions']['tabindex'] = -1;
                             $output .= self::menuLink($label, $url, $itemOptions);
                         }
-                    } else {
+                    } else { 
+                        $itemOptions['menuOptions']['iconOptions'] = $iconOptions;                       
                         $output .= self::menuDropdown($label, $url, $items, $itemOptions, $depth);
                     }
                 }
@@ -3382,7 +3416,7 @@ EOD;
      */
     public static function tabbable($type, $tabs, $htmlOptions = array())
     {
-        self::addCssClass('tabbable', $htmlOptions);
+        self::addCssClass('nav', $htmlOptions);
         $placement = TbArray::popValue('placement', $htmlOptions);
         if (!empty($placement)) {
             self::addCssClass('tabs-' . $placement, $htmlOptions);
@@ -3606,7 +3640,7 @@ EOD;
         self::addCssClass('breadcrumb', $htmlOptions);
         $output = self::openTag('ul', $htmlOptions);
         foreach ($links as $label => $url) {
-            if (is_string($label)) {
+            if (is_string($label) || is_array($url)) {
                 $output .= self::openTag('li');
                 $output .= self::link($label, $url);
                 $output .= self::tag('span', array('class' => 'divider'), $divider);

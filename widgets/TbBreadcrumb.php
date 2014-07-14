@@ -7,6 +7,7 @@
  */
 
 Yii::import('bootstrap.helpers.TbHtml');
+Yii::import('bootstrap.behaviors.TbWidget');
 
 /**
  * Bootstrap breadcrumb widget.
@@ -45,6 +46,7 @@ class TbBreadcrumb extends CWidget
      */
     public function init()
     {
+         $this->attachBehavior('TbWidget', new TbWidget);
         $this->htmlOptions['divider'] = $this->divider;
     }
 
@@ -57,11 +59,11 @@ class TbBreadcrumb extends CWidget
         if (!empty($this->links)) {
             $links = array();
             if ($this->homeLabel !== false) {
-                $label = $this->homeLabel !== null ? $this->homeLabel : TbHtml::icon('home');
+                $label = $this->homeLabel !== null ? $this->homeLabel : TbHtml::icon('home', $this->iconOptions);
                 $links[$label] = $this->homeUrl !== null ? $this->homeUrl : Yii::app()->homeUrl;
             }
             foreach ($this->links as $label => $url) {
-                if (is_string($label)) {
+                if (is_string($label)  || is_array($url) ) {
                     if ($this->encodeLabel) {
                         $label = CHtml::encode($label);
                     }

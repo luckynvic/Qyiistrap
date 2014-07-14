@@ -9,6 +9,7 @@
  */
 
 Yii::import('bootstrap.helpers.TbHtml');
+Yii::import('bootstrap.behaviors.TbWidget');
 Yii::import('zii.widgets.grid.CButtonColumn');
 
 /**
@@ -30,6 +31,38 @@ class TbButtonColumn extends CButtonColumn
     public $deleteButtonIcon = TbHtml::ICON_TRASH;
 
     /**
+     * @var boolean expression the visible delete button (defaults to true).
+     */
+    public $deleteButtonVisible='true';
+    /**
+     * @var boolean expression the visible view button (defaults to true).
+     */
+    public $viewButtonVisible='true';
+    /**
+     * @var boolean expression the visible update button (defaults to true).
+     */
+    public $updateButtonVisible='true';
+
+    public $viewButtonOptions=array(
+                'class'=>'btn btn-sm btn-default',
+            );
+
+        public $updateButtonOptions=array(
+                'class'=>'btn btn-sm btn-default',
+            );
+
+        public $deleteButtonOptions=array(
+                'class'=>'btn btn-sm btn-danger',
+            );
+
+    public function init()
+    {
+         $this->attachBehavior('TbWidget', new TbWidget);
+         $this->template='<div class="btn-group">'.$this->template.'</div>';
+         parent::init();
+    }
+
+    /**
      * Initializes the default buttons (view, update and delete).
      */
     protected function initDefaultButtons()
@@ -44,6 +77,16 @@ class TbButtonColumn extends CButtonColumn
         }
         if ($this->deleteButtonIcon !== false && !isset($this->buttons['delete']['icon'])) {
             $this->buttons['delete']['icon'] = $this->deleteButtonIcon;
+        }
+
+        foreach(array('view','update','delete') as $id)
+         {
+            $options=array(
+                'visible'=>$this->{$id.'ButtonVisible'},
+                );
+
+            if(isset($this->buttons[$id]))
+              $this->buttons[$id]=array_merge($options,$this->buttons[$id]);
         }
     }
 
@@ -77,7 +120,7 @@ class TbButtonColumn extends CButtonColumn
         TbArray::defaultValue('rel', 'tooltip', $options);
 
         if ($icon = TbArray::popValue('icon', $button, false)) {
-            echo CHtml::link(TbHtml::icon($icon), $url, $options);
+            echo CHtml::link(TbHtml::icon($icon, $this->iconOptions), $url, $options);
         } else {
             if ($imageUrl && is_string($imageUrl)) {
                 echo CHtml::link(CHtml::image($imageUrl, $label), $url, $options);

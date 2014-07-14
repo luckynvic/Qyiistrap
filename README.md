@@ -8,3 +8,16 @@ Documentation can found [http://www.getyiistrap.com](http://www.getyiistrap.com)
 
 ## Development Status
 Alpha
+
+
+## Config
+config/main
+`
+...
+'components'=>array(
+	'bootstrap'=>array(
+				'class'=>'bootstrap.components.TbApi',
+				'iconVendor'=>'fa',
+			),
+...
+)

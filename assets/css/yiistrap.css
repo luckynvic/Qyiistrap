@@ -98,6 +98,12 @@
 .grid-view.grid-view-loading .table th > .sort-link .caret {
   display: none;
 }
+
+.grid-view .pagination
+{
+  margin: 0;
+}
+
 .detail-view .null { color:#ffc0cb; }
 .detail-view th {
   text-align:right;
@@ -130,7 +136,7 @@ span.required {
 }
 
 .list-view .sorter a.desc .caret {
-border-bottom: 4px solid #000000;
+border-bottom: 4px solid;
     border-top: medium none;
 
 }

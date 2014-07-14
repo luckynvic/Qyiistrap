@@ -106,7 +106,7 @@ class TbModal extends CWidget
     public $content;
 
     /**
-     * @var string footer content
+     * @var string footer content. Set to false to hide footer container
      */
     public $footer;
 
@@ -143,7 +143,7 @@ class TbModal extends CWidget
     {
         foreach (array('onShow', 'onShown', 'onHide', 'onHidden') as $event) {
             if ($this->$event !== null) {
-                $modalEvent = strtolower(substr($event, 2));
+                $modalEvent = strtolower(substr($event, 2)).'.bs.modal';
                 if ($this->$event instanceof CJavaScriptExpression) {
                     $this->events[$modalEvent] = $this->$event;
                 } else {
@@ -159,13 +159,20 @@ class TbModal extends CWidget
      */
     public function initOptions()
     {
-        if ($remote = TbArray::popValue('remote', $this->options)) {
+        if ($remote = TbArray::popValue('remote', $this->options, $this->remote)) {
             $this->options['remote'] = CHtml::normalizeUrl($remote);
         }
 
         TbArray::defaultValue('backdrop', $this->backdrop, $this->options);
         TbArray::defaultValue('keyboard', $this->keyboard, $this->options);
         TbArray::defaultValue('show', $this->show, $this->options);
+
+        // set data api if use button 
+        if(!empty($this->buttonOptions))
+        {
+            $this->htmlOptions['data-backdrop'] = $this->backdrop;
+             $this->htmlOptions['data-keyboard'] = $this->keyboard;
+        }
     }
 
     /**
@@ -189,8 +196,6 @@ class TbModal extends CWidget
             if ($this->remote !== null) {
                 $this->buttonOptions['data-remote'] = CHtml::normalizeUrl($this->remote);
             }
-
-            
 
             $selector = '#' . $this->htmlOptions['id'];
 
@@ -250,9 +255,12 @@ class TbModal extends CWidget
     public function renderModalFooter()
     {
 
-        echo '<div class="modal-footer">' . PHP_EOL;
-        echo $this->footer;
-        echo '</div>' . PHP_EOL;
+        if($this->footer!==false) 
+        {
+            echo '<div class="modal-footer">' . PHP_EOL;
+            echo $this->footer;
+            echo '</div>' . PHP_EOL;
+        }
     }
 
     /**
@@ -262,12 +270,12 @@ class TbModal extends CWidget
     {
         $selector = '#' . $this->htmlOptions['id'];
 
+
         // do we render a button? If so, bootstrap will handle its behavior through its
         // mark-up, otherwise, register the plugin.
         if (empty($this->buttonOptions)) {
             $this->registerPlugin(TbApi::PLUGIN_MODAL, $selector, $this->options);
         }
-
         $this->registerEvents($selector, $this->events);
     }
 

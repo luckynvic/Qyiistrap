@@ -40,7 +40,7 @@ class TbGridView extends CGridView
     /**
      * @var string the template to be used to control the layout of various sections in the view.
      */
-    public $template = "{items}\n<div class=\"row-fluid\"><div class=\"span6\">{pager}</div><div class=\"span6\">{summary}</div></div>";
+    public $template = "{items}\n<div class=\"row\"><div class=\"col-md-6\">{pager}</div><div class=\"col-md-6\">{summary}</div></div>";
 
     /**
      * Initializes the widget.

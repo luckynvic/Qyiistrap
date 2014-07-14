@@ -38,6 +38,10 @@ class TbListView extends CListView
      * @var string the template to be used to control the layout of various sections in the view.
      */
     public $template = "{items}<div class=\"clearfix\"></div>\n<div class=\"row\"><div class=\"col-md-6\">{pager}</div><div class=\"col-md-6\">{summary}</div></div>";
+    /**
+     * @var string sorter Link Html Options
+     */
+    public $sorterLinkCssClass='btn btn-default btn-xs';
 
     /**
      * Renders the empty message when there is no data.
@@ -71,7 +75,7 @@ class TbListView extends CListView
         if(isset($directions[$label]))
             $labelText.=' <span class="caret"></span>';
         
-        echo $sort->link($label,$labelText);
+        echo $sort->link($label,$labelText,array('class'=>$this->sorterLinkCssClass));
 
         echo "</li>\n";
     }

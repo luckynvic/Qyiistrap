@@ -67,6 +67,9 @@ class TbNav extends CWidget
     {
         $this->attachBehavior('TbWidget', new TbWidget);
         $this->copyId();
+        
+        $this->htmlOptions['iconOptions'] = $this->iconOptions;
+
         $route = $this->controller->getRoute();
         if ($this->stacked) {
             TbHtml::addCssClass('nav-stacked', $this->htmlOptions);
@@ -85,6 +88,8 @@ class TbNav extends CWidget
      */
     public function run()
     {
+
+
         if (!empty($this->items)) {
             echo TbHtml::nav($this->type, $this->items, $this->htmlOptions);
         }

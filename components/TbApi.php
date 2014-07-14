@@ -38,7 +38,16 @@ class TbApi extends CApplicationComponent
      */
     public $forceCopyAssets = false;
 
+    /**
+     * @var string themeCssFile, point to css theme file
+     */
     public $themeCssFile;
+
+    /**
+     * @var string, icon vendor
+     */
+
+    public $iconVendor = 'glyphicon';
 
     private $_assetsUrl;
 
@@ -184,6 +193,7 @@ class TbApi extends CApplicationComponent
         $script = "jQuery('{$selector}').{$name}({$options});";
         $id = __CLASS__ . '#Plugin' . self::$counter++;
         Yii::app()->clientScript->registerScript($id, $script, $position);
+        
     }
 
     /**
