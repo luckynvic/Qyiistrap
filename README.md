@@ -12,7 +12,7 @@ Alpha
 
 ## Config
 config/main
-`
+```
 ...
 'components'=>array(
 	'bootstrap'=>array(
@@ -21,3 +21,4 @@ config/main
 			),
 ...
 )
+```
