@@ -2246,7 +2246,7 @@ EOD;
         $output = self::openTag('div', $groupOptions);
         if($row)
         {
-            // separate row so help doesnst resize to control
+            // separate row so help doesnt resize to control
             // input
             $row1 = parent::activeLabelEx($model, $attribute, $labelOptions).self::controls($input, $controlOptions);
             $output .= self::controlsRow($row1);
@@ -2489,7 +2489,7 @@ EOD;
      */
     public static function controls($controls, $htmlOptions = array())
     {
-        self::addCssClass('controls', $htmlOptions);
+        // self::addCssClass('controls', $htmlOptions);
         if (TbArray::popValue('row', $htmlOptions, false)) {
             self::addCssClass('row', $htmlOptions);
         }

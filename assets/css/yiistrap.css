@@ -1,5 +1,5 @@
-.clearfix {
   *zoom: 1;
+.clearfix {
 }
 .clearfix:before,
 .clearfix:after {
@@ -183,4 +183,9 @@ border-bottom: 4px solid;
 
 .errorSummary ul {
   padding-left: 20px;
+}
+
+.form-group .row
+{
+  margin-left: 0;
 }

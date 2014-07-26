@@ -149,9 +149,7 @@ class TbWidget extends CBehavior
     public function getIconOptions()
     {
          if (($api = $this->getApi()) !== null) {
-            return array(
-                'iconVendor'=>$api->iconVendor,
-                );
+            return $api->iconOptions;            
          }
          return array();
     }

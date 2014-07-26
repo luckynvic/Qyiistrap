@@ -220,6 +220,18 @@ class TbApi extends CApplicationComponent
         Yii::app()->clientScript->registerScript($id, $script, $position);
     }
 
+
+    /**
+     * Returns the array of icon options.
+     * @return array.
+     */
+    public function getIconOptions()
+    {
+        return array(
+            'iconVendor'=>$this->iconVendor,
+        );
+    }
+
     /**
      * Returns the url to the published assets folder.
      * @return string the url.

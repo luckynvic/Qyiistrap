@@ -22,3 +22,17 @@ config/main
 ...
 )
 ```
+
+## Usage
+* Using another icon vendor, eg : font-awsome;
+** Widget automatically using icon options from config. You need not to write another options.
+
+** static function
+ ```
+echo TbHtml::icon('gears',Yii::app()->bootstrap->iconOptions);
+echo TbHtml::linkButton('Submit', array(
+	'url'=>array('/site/index'),
+	'icon'=>'home',
+	'iconOptions'=>Yii::app()->bootstrap->iconOptions,
+));
+ ```
