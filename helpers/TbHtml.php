@@ -2252,8 +2252,8 @@ EOD;
             $output .= self::controlsRow($row1);
             // help
             if($error!=='' || $help!=='') {
-                $row2 = parent::tag('label',$labelOptions).self::controls($error.$help,array('class'=>'col-md-9'));
-                $output .= self::controlsRow($row2);
+                $row2 = parent::tag('div',$labelOptions,'&nbsp;').self::controls($error.$help,array('class'=>'col-md-9'));
+                $output .= self::controlsRow($row2);               
             }
         } else {
 
