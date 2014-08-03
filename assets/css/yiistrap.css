@@ -99,6 +99,10 @@
   display: none;
 }
 
+.list-view.list-view-loading {
+  background: url(../img/loader.gif) no-repeat 100% 10px;
+}
+
 .grid-view .pagination
 {
   margin: 0;
@@ -188,4 +192,5 @@ border-bottom: 4px solid;
 .form-group .row
 {
   margin-left: 0;
+  margin-right: 0;
 }

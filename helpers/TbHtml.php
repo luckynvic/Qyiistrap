@@ -2441,10 +2441,14 @@ EOD;
     protected static function inputAddOn($addOn, $htmlOptions)
     {
         $addOnOptions = TbArray::popValue('addOnOptions', $htmlOptions, array());
-        self::addCssClass('input-group-addon', $addOnOptions);
-        return strpos($addOn, 'btn') === false // buttons should not be wrapped in a span
-            ? self::tag('span', $addOnOptions, $addOn)
-            : $addOn;
+
+        
+        self::addCssClass(
+            (strpos($addOn, 'btn') === false)?'input-group-addon':'input-group-btn',
+             $addOnOptions);
+        
+        
+        return self::tag('span', $addOnOptions, $addOn);
     }
 
     /**
@@ -3019,7 +3023,8 @@ EOD;
             $parentOptions = array(
                 'color' => TbArray::popValue('color', $htmlOptions),
                 'size' => TbArray::popValue('size', $htmlOptions),
-                'disabled' => TbArray::popValue('disabled', $htmlOptions),               
+                'disabled' => TbArray::popValue('disabled', $htmlOptions),   
+                'iconOptions' =>  TbArray::popValue('iconOptions', $htmlOptions),   
             );
 
             if(TbArray::popValue('justified', $htmlOptions,false))
@@ -3037,7 +3042,7 @@ EOD;
                     $buttonOptions = TbArray::merge($options, $buttonOptions);
                 }
                 $buttonLabel = TbArray::popValue('label', $buttonOptions, '');
-                $buttonOptions = TbArray::copyValues(array('color', 'size', 'disabled'), $parentOptions, $buttonOptions);
+                $buttonOptions = TbArray::copyValues(array('color', 'size', 'disabled', 'iconOptions'), $parentOptions, $buttonOptions);
                 $items = TbArray::popValue('items', $buttonOptions, array());
 
                 // will applied for toggle button
@@ -3047,7 +3052,7 @@ EOD;
                     TbHtml::addCssClass('active', $buttonOptions);
 
                 $controlId=TbArray::popValue('controlId',$buttonOptions,$id.'_'.$key);
-
+                
                 if (!empty($items)) {
                     $output .= self::buttonDropdown($buttonLabel, $items, $buttonOptions);
                 } else {
