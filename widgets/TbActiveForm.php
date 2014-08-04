@@ -94,7 +94,7 @@ class TbActiveForm extends CActiveForm
             'model' => get_class($model),
             'name' => $attribute,
             'enableAjaxValidation' => $enableAjaxValidation,
-            'inputContainer' => 'div.control-group', // Bootstrap requires this
+            'inputContainer' => 'div.form-group', // Bootstrap requires this
         );
         $optionNames = array(
             'validationDelay',
