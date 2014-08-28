@@ -1102,8 +1102,7 @@ class TbHtml extends CHtml // required in order to access the protected methods 
             $htmlOptions['value'] = 1;
             $htmlOptions['id'] = $id = $baseID . '_all';
             $option = self::checkBox($id, $checkAll, $htmlOptions);
-            $label = self::label($checkAllLabel, $id, $labelOptions);
-            $item = $option . ' ' . $label;
+            $item = self::label($option . ' ' . $checkAllLabel, false, $labelOptions);
             if ($checkAllLast) {
                 $items[] = $item;
             } else {
@@ -1830,9 +1829,9 @@ EOD;
         parent::resolveNameID($model, $attribute, $htmlOptions);
         $selection = parent::resolveValue($model, $attribute);
         $name = TbArray::popValue('name', $htmlOptions);
-        $unCheck = TbArray::popValue('uncheckValue', $htmlOptions, '');
+        $uncheckValue = array_key_exists('uncheckValue',$htmlOptions) ? TbArray::popValue('uncheckValue', $htmlOptions) : '';
         $hiddenOptions = isset($htmlOptions['id']) ? array('id' => parent::ID_PREFIX . $htmlOptions['id']) : array('id' => false);
-        $hidden = $unCheck !== null ? parent::hiddenField($name, $unCheck, $hiddenOptions) : '';
+        $hidden = isset($uncheckValue) ? parent::hiddenField($name, $uncheckValue, $hiddenOptions) : '';
         return $hidden . self::radioButtonList($name, $selection, $data, $htmlOptions);
     }
 
@@ -1864,11 +1863,11 @@ EOD;
         $selection = parent::resolveValue($model, $attribute);
         if ($model->hasErrors($attribute)) {
             parent::addErrorCss($htmlOptions);
-        }
+        }        
         $name = TbArray::popValue('name', $htmlOptions);
-        $unCheck = TbArray::popValue('uncheckValue', $htmlOptions, '');
+        $uncheckValue = array_key_exists('uncheckValue',$htmlOptions) ? TbArray::popValue('uncheckValue', $htmlOptions) : '';
         $hiddenOptions = isset($htmlOptions['id']) ? array('id' => parent::ID_PREFIX . $htmlOptions['id']) : array('id' => false);
-        $hidden = $unCheck !== null ? parent::hiddenField($name, $unCheck, $hiddenOptions) : '';
+        $hidden = isset($uncheckValue) ? parent::hiddenField($name, $uncheckValue, $hiddenOptions) : '';        
         return $hidden . self::checkBoxList($name, $selection, $data, $htmlOptions);
     }
 
@@ -3460,6 +3459,7 @@ EOD;
             $menuItem['active'] = TbArray::getValue('active', $tabOptions, false);
             $menuItem['disabled'] = TbArray::popValue('disabled', $tabOptions, false);
             $menuItem['linkOptions'] = TbArray::popValue('linkOptions', $tabOptions, array());
+            // $menuItem['htmlOptions'] = TbArray::popValue('htmlOptions', $tabOptions, array());
             $items = TbArray::popValue('items', $tabOptions, array());
             if (!empty($items)) {
                 $menuItem['linkOptions']['data-toggle'] = 'dropdown';
