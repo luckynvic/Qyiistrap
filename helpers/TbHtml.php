@@ -1021,7 +1021,7 @@ class TbHtml extends CHtml // required in order to access the protected methods 
             $htmlOptions['id'] = $baseID . '_' . $id++;
             if ($inline) {
                 $htmlOptions['label'] = $label;
-                self::addCssClass('inline', $labelOptions);
+                self::addCssClass('radio-inline', $labelOptions);
                 $htmlOptions['labelOptions'] = $labelOptions;
                 $items[] = self::radioButton($name, $checked, $htmlOptions);
             } else {
@@ -1088,7 +1088,7 @@ class TbHtml extends CHtml // required in order to access the protected methods 
             $htmlOptions['id'] = $baseID . '_' . $id++;
             if ($inline) {
                 $htmlOptions['label'] = $label;
-                self::addCssClass('inline', $labelOptions);
+                self::addCssClass('checkbox-inline', $labelOptions);
                 $htmlOptions['labelOptions'] = $labelOptions;
                 $items[] = self::checkBox($name, $checked, $htmlOptions);
             } else {
@@ -1525,7 +1525,7 @@ EOD;
     {
         switch ($type) {
              case self::INPUT_TYPE_STATIC:
-                return self::staticField($name, $value, $htmlOptions);
+                return self::staticField($value, $htmlOptions);
             case self::INPUT_TYPE_TEXT:
                 return self::textField($name, $value, $htmlOptions);
             case self::INPUT_TYPE_PASSWORD:
@@ -1625,7 +1625,9 @@ EOD;
 
     public static function activeStaticField($model, $attribute, $htmlOptions = array(), $tag='p')
     {
-        $text=self::resolveValue($model,$attribute);
+        $text = TbArray::popValue('value', $htmlOptions, false);
+        if(!$text)
+            $text=self::resolveValue($model,$attribute);
         $output='';
         if(TbArray::popValue('hiddenField',$htmlOptions,true))
             $output=self::activeHiddenField($model,$attribute);
