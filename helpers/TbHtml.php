@@ -2905,11 +2905,11 @@ EOD;
 
         if (is_string($icon)) {
             // if (strpos($icon, 'icon') === false) {
-                $icon = $iconClass.'-' . implode($iconClass.'-', explode(' ', $icon));
+                $icon = $iconClass.'-' . implode(' '.$iconClass.'-', explode(' ', $icon));
             // }
             // default class 
             // refer to http://getbootstrap.com/components/#glyphicons-how-to-use
-            self::addCssClass($iconClass,$htmlOptions);
+            self::addCssClass($iconClass, $htmlOptions);
 
             self::addCssClass($icon, $htmlOptions);
             $color = TbArray::popValue('color', $htmlOptions);
