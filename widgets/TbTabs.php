@@ -70,7 +70,7 @@ class TbTabs extends CWidget
     {
         foreach (array('onShow', 'onShown') as $event) {
             if ($this->$event !== null) {
-                $modalEvent = strtolower(substr($event, 2));
+                $modalEvent = strtolower(substr($event, 2)).'.bs.tab';
                 if ($this->$event instanceof CJavaScriptExpression) {
                     $this->events[$modalEvent] = $this->$event;
                 } else {
