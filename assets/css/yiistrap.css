@@ -121,7 +121,8 @@ span.required {
 
 .list-view .pagination-container .pagination 
 {
-  margin: 0;
+  margin-bottom: 0;
+  margin-top: 10px;
 }
 
 .list-view .sorter {
@@ -193,4 +194,10 @@ border-bottom: 4px solid;
 {
   margin-left: 0;
   margin-right: 0;
+}
+
+.pager
+{
+  margin-top: 10px;
+  margin-bottom: 0;
 }

@@ -63,7 +63,8 @@ class TbPager extends CBasePager
         $this->attachBehavior('TbWidget', new TbWidget);
         $this->copyId();
         if (isset($this->size)) {
-            TbArray::defaultValue('size', $this->size, $this->htmlOptions);
+            // TbArray::defaultValue('size', $this->size, $this->htmlOptions);
+            TbHtml::addCssClass(($this->simplePager?'pager-':'pagination-').$this->size, $this->htmlOptions);
         }
     }
 
