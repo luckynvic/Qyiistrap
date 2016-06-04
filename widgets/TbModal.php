@@ -111,6 +111,11 @@ class TbModal extends CWidget
     public $footer;
 
     /**
+     * @var string modal size (lg, sm)
+     */
+    public $size;
+
+    /**
      * Widget's initialization method
      */
     public function init()
@@ -216,7 +221,14 @@ class TbModal extends CWidget
     public function renderModal()
     {
         echo TbHtml::openTag('div', $this->htmlOptions) . PHP_EOL;
-        echo TbHtml::openTag('div',array('class'=>'modal-dialog')). PHP_EOL;
+
+        $bodyOptions = array(
+            'class' => 'modal-dialog',
+            );
+        if(isset($this->size) && in_array($this->size, array('sm', 'lg'))) {
+                TbHtml::addCssClass('modal-'.$this->size, $bodyOptions);
+        }
+        echo TbHtml::openTag('div',$bodyOptions). PHP_EOL;
         echo TbHtml::openTag('div',array('class'=>'modal-content')). PHP_EOL;
         $this->renderModalHeader();
         $this->renderModalBody();
