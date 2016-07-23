@@ -1027,7 +1027,7 @@ class TbHtml extends CHtml // required in order to access the protected methods 
             } else {
                 $option = self::radioButton($name, $checked, $htmlOptions);
                 self::addCssClass('radio', $labelOptions);
-                $items[] = self::label($option . ' ' . $label, false, $labelOptions);
+                $items[] = self::tag('div', array('class'=>'radio'), self::label($option . ' ' . $label, false, $labelOptions));
             }
         }
 
