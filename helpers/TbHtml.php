@@ -2732,6 +2732,7 @@ EOD;
             $items = TbArray::popValue('items', $htmlOptions);
         }
         $dropdownOptions = $htmlOptions;
+        $dropdownOptions['iconOptions']=$iconOptions;
         TbArray::removeValues(array('groupOptions', 'menuOptions', 'dropup'), $htmlOptions);
         self::addSpanClass($htmlOptions); // must be called here as parent renders buttons
         self::addPullClass($htmlOptions); // must be called here as parent renders buttons
@@ -2763,6 +2764,7 @@ EOD;
         } else {
             $output .= self::dropdownToggleLink($label, $htmlOptions);
         }
+        $menuOptions['iconOptions'] = TbArray::popValue('iconOptions', $htmlOptions, array());
         $output .= self::dropdown($items, $menuOptions);
         $output .= '</div>';
         return $output;
