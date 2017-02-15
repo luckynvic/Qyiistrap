@@ -55,7 +55,7 @@ class TbAlert extends CWidget
                     TbHtml::ALERT_COLOR_SUCCESS,
                     TbHtml::ALERT_COLOR_WARNING,
                     TbHtml::ALERT_COLOR_INFO,
-                    TbHtml::ALERT_COLOR_ERROR
+                    TbHtml::ALERT_COLOR_DANGER
                 ); // render all styles by default
             } else
             {
